@@ -8,8 +8,8 @@ public class GroceryItem {
     this.taxable=taxable;
   }
   public boolean equals(Object obj){
-    if(this.name.equals(obj);
-       if(this.price == price);
+    if(this.name.equals(obj.name);
+       if(this.price == obj.price);
        else
      
     
