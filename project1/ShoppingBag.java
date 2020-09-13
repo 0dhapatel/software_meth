@@ -9,7 +9,7 @@ public class ShoppingBag {
   // helper method to find an item
   private int find(GroceryItem item) {
   
-      C //the for loop runs through the array of items
+      for(int i = 0; i < size; i++ ) //the for loop runs through the array of items
       {
           if(item.name.equals(bag[i].name)){
                   if(item.prize==bag[i].prize&&item.taxable == bag[i].taxable)
@@ -57,6 +57,7 @@ public class ShoppingBag {
 
   public double salesPrice(){
   
+  for(int i =
   
    }
   
