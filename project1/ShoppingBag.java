@@ -12,7 +12,7 @@ public class ShoppingBag {
       for(int i = 0; i < size; i++ ) //the for loop runs through the array of items
       {
           if(item.name.equals(bag[i].name)){
-                  if(item.prize==bag[i].prize&&item.taxable == bag[i].taxable)
+                  if(item.price==bag[i].price&&item.taxable == bag[i].taxable)
                       return i; /**nested  if statements to check if the bag array contains an item 
                                  with the same name, price, and*/ }
       }
@@ -23,9 +23,11 @@ public class ShoppingBag {
   private void grow() { } // helper method to grow the capacity
   
   public void add(GroceryItem item) {
+  
       if(size+1>capacity){ //uses helper method grow to add more sapce is need in the array 
       grow();
       }
+      
       bag[size].name = item.name; //add item name to bag
       bag[size].prize = item.prize; //add item prize to bag
       bag[size].taxable = item.taxable; //add item taxable to bag
@@ -39,6 +41,7 @@ public class ShoppingBag {
       if (key == -1){
           return 0;
       }
+      
       //item found and removed successfully
       else{
           size-=1; //remove size by 1
@@ -57,13 +60,35 @@ public class ShoppingBag {
 
   public double salesPrice(){
   
-  for(int i =
+  double salesPrice;
+  
+  for(int i = 0; i < size; i++){
+      
+      salesPrice += bag[i].price;
+  
+  }
+      return salesPrice; 
   
    }
   
-  public double salesTax() { }
+  public double salesTax() {
   
-  public void print() {
+  double salesTax;
+  
+  for(int i = 0; i < size; i++){
+      
+     if(bag[i].taxable){
+     salesTax += bag[i].price*0.06625;
+     }
+  
+  }
+      return salesTax; 
+   }
+  
+  public void print(double salesPrice, double SalesTax) {
+  
+  System.out.printf("%2d);
+  
   
    }
   
