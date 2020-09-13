@@ -7,7 +7,13 @@ public class GroceryItem {
     this.price=price;
     this.taxable=taxable;
   }
-  public boolean equals(Object obj){ }
+  public boolean equals(Object obj){
+    if(this.name.equals(obj);
+       if(this.price == price);
+       else
+     
+    
+  }
   public String toString() { }
   ...
 }
