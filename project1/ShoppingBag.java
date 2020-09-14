@@ -22,16 +22,20 @@ public class ShoppingBag {
   
   private void grow() { } // helper method to grow the capacity
   
+  /* This methos adds item object into the bag array. 
+  The object consists of name, price, and taxable. 
+  At the end the @size is incremented by 1. */
+  
   public void add(GroceryItem item) {
   
-      if(size+1>capacity){ //uses helper method grow to add more sapce is need in the array 
+      if(size+1>capacity){ //if capicity is smaller, use helper method grow to add more sapce 
       grow();
       }
       
-      bag[size].name = item.name; //add item name to bag
-      bag[size].prize = item.prize; //add item prize to bag
-      bag[size].taxable = item.taxable; //add item taxable to bag
-      size+=1; //add size by 1
+      bag[size].name = item.name; 
+      bag[size].price = item.price; 
+      bag[size].taxable = item.taxable; 
+      size+=1; 
   }
   
   public boolean remove(GroceryItem item) {
@@ -47,12 +51,12 @@ public class ShoppingBag {
           size-=1; //remove size by 1
           //taking the last item and replacing to thebeing removed
           bag[key].name = bag[size].name; 
-          bag[key].prize = bag[size].prize;
-          bag[key].taxable = bag[size].prize;
+          bag[key].price = bag[size].price;
+          bag[key].taxable = bag[size].taxable;
           
           //setting last item to null
           bag[size].name=NULL;
-          bag[size].prize=NULL;
+          bag[size].price=NULL;
           bag[size].taxable=NULL; 
       }
       return 1;     
