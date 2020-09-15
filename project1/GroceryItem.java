@@ -9,10 +9,11 @@ public class GroceryItem {
   }
   public boolean equals(Object obj){
     if(this.name.equals(obj.name);
-       if(this.price == obj.price);
-       else
-     
-    
+       if(this.price == obj.price && this.taxable == obj.taxable){
+         return 1;
+       }
+      }
+    return 0; 
   }
   public String toString() { }
   ...
