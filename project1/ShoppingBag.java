@@ -15,9 +15,9 @@ public class ShoppingBag {
   // helper method to find an item
   private int find(GroceryItem item) {
   
-      for(int i = 0; i < size; i++ ) //the for loop runs through the array of items
+      for(int i = 0; i < this.size; i++ ) //the for loop runs through the array of items
       {
-          if(item.equals(bag[i])){
+          if(item.equals(this.bag[i])){
               return i; 
           }
       }
@@ -33,12 +33,12 @@ public class ShoppingBag {
   
   public void add(GroceryItem item) {
   
-      if(size+1>capacity){ //if capicity is smaller, use helper method grow to add more sapce 
+      if(this.size+1>this.capacity){ //if capicity is smaller, use helper method grow to add more sapce 
       grow();
       }
       
-      bag[size] = item;
-      size = size + 1; 
+      this.bag[this.size] = item;
+      this.size = this.size + 1; 
   }
   
   public boolean remove(GroceryItem item) {
@@ -51,12 +51,12 @@ public class ShoppingBag {
       
       //item found and removed successfully
       else{
-          size = size - 1; //remove size by 1
+          this.size = this.size - 1; //remove size by 1
           //taking the last item and replacing to thebeing removed
-          bag[key] = bag[size]; 
+          this.bag[key] = this.bag[this.size]; 
           
           //setting last item to null
-          bag[size]=NULL;
+          this.bag[this.size]=NULL;
       }
       return 1;     
   }
@@ -65,9 +65,9 @@ public class ShoppingBag {
   
   double salesPrice;
   
-  for(int i = 0; i < size; i++){
+  for(int i = 0; i < this.size; i++){
       
-      salesPrice += bag[i].get_price;
+      salesPrice += this.bag[i].get_price;
   
   }
       return salesPrice; 
@@ -78,10 +78,10 @@ public class ShoppingBag {
   
   double salesTax;
   
-  for(int i = 0; i < size; i++){
+  for(int i = 0; i < this.size; i++){
       
-     if(bag[i].get_taxable){
-     salesTax += bag[i].get_price*0.06625;
+     if(this.bag[i].get_taxable){
+     salesTax += this.bag[i].get_price*0.06625;
      }
   
   }
