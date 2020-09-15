@@ -11,8 +11,8 @@ public class ShoppingBag {
   
       for(int i = 0; i < size; i++ ) //the for loop runs through the array of items
       {
-          if(item.name.equals(bag[i].name)){
-                  if(item.price==bag[i].price&&item.taxable == bag[i].taxable)
+          if(item.get_name.equals(bag[i].get_name)){
+                  if(item.get_price==bag[i].get_price&&item.get_taxable == bag[i].get_taxable)
                       return i; /**nested  if statements to check if the bag array contains an item 
                                  with the same name, price, and*/ }
       }
@@ -32,9 +32,7 @@ public class ShoppingBag {
       grow();
       }
       
-      bag[size].name = item.name; 
-      bag[size].price = item.price; 
-      bag[size].taxable = item.taxable; 
+      bag[size] = item;
       size+=1; 
   }
   
@@ -50,14 +48,10 @@ public class ShoppingBag {
       else{
           size-=1; //remove size by 1
           //taking the last item and replacing to thebeing removed
-          bag[key].name = bag[size].name; 
-          bag[key].price = bag[size].price;
-          bag[key].taxable = bag[size].taxable;
+          bag[key] = bag[size]; 
           
           //setting last item to null
-          bag[size].name=NULL;
-          bag[size].price=NULL;
-          bag[size].taxable=NULL; 
+          bag[size]=NULL;
       }
       return 1;     
   }
@@ -68,7 +62,7 @@ public class ShoppingBag {
   
   for(int i = 0; i < size; i++){
       
-      salesPrice += bag[i].price;
+      salesPrice += bag[i].get_price;
   
   }
       return salesPrice; 
@@ -81,8 +75,8 @@ public class ShoppingBag {
   
   for(int i = 0; i < size; i++){
       
-     if(bag[i].taxable){
-     salesTax += bag[i].price*0.06625;
+     if(bag[i].get_taxable){
+     salesTax += bag[i].get_price*0.06625;
      }
   
   }
