@@ -17,10 +17,9 @@ public class ShoppingBag {
   
       for(int i = 0; i < size; i++ ) //the for loop runs through the array of items
       {
-          if(item.get_name.equals(bag[i].get_name)){
-                  if(item.get_price==bag[i].get_price&&item.get_taxable == bag[i].get_taxable)
-                      return i; /**nested  if statements to check if the bag array contains an item 
-                                 with the same name, price, and*/ }
+          if(item.equals(bag[i])){
+              return i; 
+          }
       }
       return -1;      
       
@@ -39,7 +38,7 @@ public class ShoppingBag {
       }
       
       bag[size] = item;
-      size+=1; 
+      size = size + 1; 
   }
   
   public boolean remove(GroceryItem item) {
@@ -52,7 +51,7 @@ public class ShoppingBag {
       
       //item found and removed successfully
       else{
-          size-=1; //remove size by 1
+          size = size - 1; //remove size by 1
           //taking the last item and replacing to thebeing removed
           bag[key] = bag[size]; 
           
