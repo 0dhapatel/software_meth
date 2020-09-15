@@ -3,7 +3,7 @@ public class ShoppingBag {
   private int size; // number of items currently in the bag
   private int capacity; // current capacity
   
-  public static final int DEFAULT_ITEM_SIZE = 5;
+  public int DEFAULT_ITEM_SIZE = 5;
   
   
   public ShoppingBag() {
