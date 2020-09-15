@@ -10,7 +10,7 @@ public class GroceryItem {
     this.taxable=taxable;
   }
   
-  //Observer
+  //Observer Method for each Variable
   public String get_name(){
     return this.name;
   }
@@ -29,6 +29,9 @@ public class GroceryItem {
       }
     return 0; 
   }
-  public String toString() { }
-  ...
+  public String toString() { 
+    String merged_string = this.name + this.price + this.taxable; //not done right have to fix based on criteria
+    return merged_string;
+  }
+  
 }
