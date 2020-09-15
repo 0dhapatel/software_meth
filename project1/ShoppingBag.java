@@ -3,8 +3,14 @@ public class ShoppingBag {
   private int size; // number of items currently in the bag
   private int capacity; // current capacity
   
+  public static final int DEFAULT_ITEM_SIZE = 5;
   
-  public ShoppingBag() { }
+  
+  public ShoppingBag() {
+    this.bag = new GroceryItem[DEFAULT_ITEM_SIZE];
+    this.size = 0;
+    this.capacity = 5;
+  }
   
   // helper method to find an item
   private int find(GroceryItem item) {
