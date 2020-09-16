@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class GroceryItem {
   private String name;
   private double price;
@@ -17,20 +19,27 @@ public class GroceryItem {
   public double get_price(){
     return this.price;
   }
-  public boolean taxable(){
+  public boolean get_taxable(){
     return this.taxable;
   }
   
   public boolean equals(Object obj){
-    if(this.name.equals(obj.name);
+    if(this.name.equals(obj.name){
        if(this.price == obj.price && this.taxable == obj.taxable){
          return 1;
        }
-      }
+    }
     return 0; 
   }
   public String toString() { 
-    String merged_string = this.name + this.price + this.taxable; //not done right have to fix based on criteria
+    String price_string = this.price.toString();
+    String tax_string = "";
+    if(this.taxable){
+      tax_string = "is taxable";
+    }else
+      tax_string = "tax free";
+    }
+    String merged_string = this.name + ": $" + price_string + " : " + tax_string;
     return merged_string;
   }
   
