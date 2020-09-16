@@ -1,6 +1,9 @@
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class Shopping {
+	
+	private static DecimalFormat df2 = new DecimalFormat("#.##"); //helps lower the number to 2 decimal places as string
 
 	public void run() {
 		 
