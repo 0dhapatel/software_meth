@@ -1,10 +1,12 @@
+import java.text.DecimalFormat;
+
 public class ShoppingBag {
   private GroceryItem[] bag; // array-based implementation of the bag
   private int size; // number of items currently in the bag
   private int capacity; // current capacity
   
   public int DEFAULT_ITEM_SIZE = 5;
-  
+  private static DecimalFormat df2 = new DecimalFormat("#.##");
   
   public ShoppingBag() {
     this.bag = new GroceryItem[DEFAULT_ITEM_SIZE];
