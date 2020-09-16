@@ -100,12 +100,14 @@ public class ShoppingBag {
    }
   
   public void print() {
+    System.out.println("**You have "+ this.size +" items in the bag.");
     if(this.size < 1){
       System.out.println("");
     }
     for(int i = 0; i < this.size; i++){
       System.out.println(bag[i].toString());
   }
+    System.out.println("**End of list");
    }
   
 }
