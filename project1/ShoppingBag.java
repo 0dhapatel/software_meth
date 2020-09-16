@@ -67,7 +67,7 @@ public class ShoppingBag {
   
   for(int i = 0; i < this.size; i++){
       
-      salesPrice += this.bag[i].get_price;
+      salesPrice += this.bag[i].get_price();
   
   }
       return salesPrice; 
@@ -80,19 +80,21 @@ public class ShoppingBag {
   
   for(int i = 0; i < this.size; i++){
       
-     if(this.bag[i].get_taxable){
-     salesTax += this.bag[i].get_price*0.06625;
+     if(this.bag[i].get_taxable()){
+     salesTax += this.bag[i].get_price()*0.06625;
      }
   
   }
       return salesTax; 
    }
   
-  public void print(double salesPrice, double SalesTax) {
-  
-  System.out.printf("%2d);
-  
-  
+  public void print() {
+    if(this.size < 1){
+      System.out.println("");
+    }
+    for(int i = 0; i < this.size; i++){
+      System.out.println(bag[i].print());
+  }
    }
   
 }
