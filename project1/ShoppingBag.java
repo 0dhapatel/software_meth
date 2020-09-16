@@ -25,7 +25,15 @@ public class ShoppingBag {
       
    }
   
-  private void grow() { } // helper method to grow the capacity
+  private void grow() { // helper method to grow the capacity
+    this.capacity = this.capacity + 5;
+    GroceryItem[] temp_bag = new GroceryItem[this.capacity];
+    for (int i = 0; i < this.size; i++){
+      this.bag[i] = temp_bag[i];
+    }
+    this.bag = new GroceryItem[this.capacity];
+    this.bag = temp_bag;
+  } 
   
   /* This methos adds item object into the bag array. 
   The object consists of name, price, and taxable. 
@@ -33,7 +41,7 @@ public class ShoppingBag {
   
   public void add(GroceryItem item) {
   
-      if(this.size+1>this.capacity){ //if capicity is smaller, use helper method grow to add more sapce 
+      if(this.size==this.capacity){ //if capicity is smaller, use helper method grow to add more sapce 
       grow();
       }
       
