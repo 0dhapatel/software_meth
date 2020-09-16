@@ -100,7 +100,7 @@ public class ShoppingBag {
    }
   
   public void print() {
-    String item_s = "";
+   /* String item_s = "";
     if(this.size>1){
       item_s=" items";
     }else{
@@ -108,11 +108,11 @@ public class ShoppingBag {
     System.out.println("**You have "+ this.size + item_s +" in the bag.");
     if(this.size < 1){
       System.out.println("The bag is empty!");
-    }
+    } */
     for(int i = 0; i < this.size; i++){
       System.out.println("·"+bag[i].toString());
   }
-    System.out.println("**End of list");
+    //System.out.println("**End of list");
    }
   
 }
