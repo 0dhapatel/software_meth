@@ -27,6 +27,9 @@ public class ShoppingBag {
   
   private void grow() { // helper method to grow the capacity
     this.capacity = this.capacity + 5;
+    
+    //this.bag= Arrays.copyof(this.bag, this.capacity);
+    
     GroceryItem[] temp_bag = new GroceryItem[this.capacity];
     for (int i = 0; i < this.size; i++){
       this.bag[i] = temp_bag[i];
