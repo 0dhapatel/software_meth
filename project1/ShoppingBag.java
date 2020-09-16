@@ -57,7 +57,7 @@ public class ShoppingBag {
       int key = find(item);
       //item not found
       if (key == -1){
-          return 0;
+          return false;
       }
       
       //item found and removed successfully
@@ -69,7 +69,7 @@ public class ShoppingBag {
           //setting last item to null
           this.bag[this.size]=NULL;
       }
-      return 1;     
+      return true;     
   }
 
   public double salesPrice(){
@@ -104,7 +104,7 @@ public class ShoppingBag {
       System.out.println("");
     }
     for(int i = 0; i < this.size; i++){
-      System.out.println(bag[i].print());
+      System.out.println(bag[i].toString());
   }
    }
   
