@@ -105,7 +105,7 @@ public class ShoppingBag {
       System.out.println("");
     }
     for(int i = 0; i < this.size; i++){
-      System.out.println(bag[i].toString());
+      System.out.println("•"+bag[i].toString());
   }
     System.out.println("**End of list");
    }
