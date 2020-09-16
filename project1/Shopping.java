@@ -9,7 +9,7 @@ public class Shopping {
 		Scanner keyboard = new Scanner(System.in); 
 		 char userImput = keyboard.next().charAt(0);
 		 
-		 System.out.println("Let's start shopping!"); 
+		 //System.out.println("Let's start shopping!");  //do not need
 		 while(userImput != 'Q') {
 		 
 		 switch (userImput) {
@@ -27,6 +27,7 @@ public class Shopping {
 	          case 4:  userImput = 'C';
 	                   break;
 	          case 5:  userImput = 'Q';
+				 System.out.println("Thanks for shopping with us!");
 	                   break;
 	          default: System.out.println("Invalid command!"); 
 	                   break;
