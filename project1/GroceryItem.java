@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class GroceryItem {
   private String name;
@@ -23,6 +24,8 @@ public class GroceryItem {
     return this.taxable;
   }
   
+  private static DecimalFormat df2 = new DecimalFormat("#.##");
+  
   public boolean equals(Object obj){
     if(this.name.equals(obj.name){
        if(this.price == obj.price && this.taxable == obj.taxable){
@@ -32,7 +35,7 @@ public class GroceryItem {
     return 0; 
   }
   public String toString() { 
-    String price_string = this.price.toString();
+    String price_string = df2.format(this.price);
     String tax_string = "";
     if(this.taxable){
       tax_string = "is taxable";
