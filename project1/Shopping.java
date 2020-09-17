@@ -11,7 +11,7 @@ public class Shopping {
 		Scanner keyboard = new Scanner(System.in); 
 		 char userImput = keyboard.next().charAt(0);
 		 
-		 //System.out.println("Let's start shopping!"); 
+		 System.out.println("Let's start shopping!"); 
 		 while(userImput != 'Q') {
 		 
 		 switch (userImput) {
