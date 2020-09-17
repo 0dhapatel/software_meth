@@ -36,7 +36,7 @@ public class GroceryItem {
     String tax_string = "";
     if(this.taxable){
       tax_string = "is taxable";
-    }else
+    }else{
       tax_string = "tax free";
     }
     String merged_string = this.name + ": $" + price_string + " : " + tax_string;
