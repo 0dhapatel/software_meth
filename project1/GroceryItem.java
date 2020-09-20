@@ -7,7 +7,7 @@ public class GroceryItem {
   private boolean taxable;
   
   // Constructor
-  public GroceryItem(String name, double prize, boolean taxable){
+  public GroceryItem(String name, double price, boolean taxable){
     this.name=name;
     this.price=price;
     this.taxable=taxable;
@@ -27,13 +27,16 @@ public class GroceryItem {
   private static DecimalFormat df2 = new DecimalFormat("#.##");
   
   public boolean equals(Object obj){
-    if(this.name.equals(obj.name){
+    //GroceryItem objg = new GroceryItem();
+    //objg = (GroceryItem) obj;
+    if(this.name.compareTo(obj.name)==0){
        if(this.price == obj.price && this.taxable == obj.taxable){
-         return 1;
+         return true;
        }
     }
-    return 0; 
+    return false; 
   }
+  
   public String toString() { 
     String price_string = df2.format(this.price);
     String tax_string = "";
@@ -46,4 +49,26 @@ public class GroceryItem {
     return merged_string;
   }
   
+  public static void main(String []args){
+      
+         GroceryItem test1 = new GroceryItem("milk", 4.99, false);
+         GroceryItem test2 = new GroceryItem("milk", 4.99, false);
+         GroceryItem test3 = new GroceryItem("water", 2.99, true);
+         
+         System.out.println("Constructor");
+         System.out.println(test1.name+""+test1.price+""+test1.taxable);
+         
+         System.out.println("Observer");
+         System.out.println(test1.get_name()+""+test1.get_price()+""+test1.get_taxable());
+         
+         System.out.println("equals()");
+         System.out.println(test1.equals(test2));
+         System.out.println(test1.equals(test3));
+         
+        System.out.println("toString()");
+        GroceryItem test4= new GroceryItem("laptop", 504.99222, true);
+        System.out.println(test1.toString());
+        System.out.println(test4.toString());
+
+     }
 }
