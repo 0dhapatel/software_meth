@@ -22,7 +22,15 @@ public class Shopping {
 	                   break;
 	          case 2:  userImput = 'R';
 	          GroceryItem removeItem = new GroceryItem(keyboard.nextLine(), keyboard.nextDouble(), keyboard.nextBoolean());
-	          bag.remove(removeItem);
+	          //bag.remove(removeItem); do not need
+		
+		if(bag.remove(removeItem)){
+			//this is true
+		}else{
+			//this is false
+		}
+				 
+				 
 	                   break;
 	          case 3:  userImput = 'P';
 	          bag.print();
