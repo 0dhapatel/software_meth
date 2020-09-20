@@ -34,13 +34,10 @@ public class ShoppingBag {
     
     GroceryItem[] temp_bag = new GroceryItem[this.capacity];
     for (int i = 0; i < this.size; i++){
-      this.bag[i] = temp_bag[i];
-    }
-    this.bag = new GroceryItem[this.capacity];
-    this.bag = new int[this.capacity];
-    for (int i = 0; i < this.size; i++){
       temp_bag[i] = this.bag[i];
     }
+    this.bag = new GroceryItem[this.capacity];
+    this.bag = temp_bag;
   } 
   
   /* This methos adds item object into the bag array. 
