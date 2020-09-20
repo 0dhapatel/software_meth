@@ -27,12 +27,9 @@ public class GroceryItem {
   private static DecimalFormat df2 = new DecimalFormat("#.##");
   
   public boolean equals(Object obj){
-    //GroceryItem objg = new GroceryItem();
-    //objg = (GroceryItem) obj;
-    if(this.name.compareTo(obj.name)==0){
-       if(this.price == obj.price && this.taxable == obj.taxable){
-         return true;
-       }
+    public boolean equals(Object obj){
+    if(this.toString().equals(obj.toString())){
+        return true;
     }
     return false; 
   }
@@ -64,6 +61,7 @@ public class GroceryItem {
          System.out.println("equals()");
          System.out.println(test1.equals(test2));
          System.out.println(test1.equals(test3));
+         System.out.println(test3.equals(test3));
          
         System.out.println("toString()");
         GroceryItem test4= new GroceryItem("laptop", 504.99222, true);
