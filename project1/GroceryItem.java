@@ -27,11 +27,7 @@ public class GroceryItem {
   private static DecimalFormat df2 = new DecimalFormat("#.##");
   
   public boolean equals(Object obj){
-    public boolean equals(Object obj){
-    if(this.toString().equals(obj.toString())){
-        return true;
-    }
-    return false; 
+    return this.toString().equals(obj.toString();
   }
   
   public String toString() { 
