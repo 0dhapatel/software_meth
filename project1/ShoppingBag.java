@@ -135,7 +135,7 @@ public class ShoppingBag {
   public void print() {
    
     for(int i = 0; i < this.size; i++){
-      System.out.println("·"+bag[i].toString());
+      System.out.println("\u2022"+bag[i].toString());
   }
    }
   
