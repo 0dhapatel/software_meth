@@ -4,6 +4,14 @@ import java.text.DecimalFormat;
 public class Shopping {
 
 	private static DecimalFormat df2 = new DecimalFormat("#.##"); //helps format the number to 2 decimal places as string
+	
+	private GroceryItem iteminfo (String[] cmdArr){
+         	String name = cmdArr[1];
+         	double price = Double.parseDouble(cmdArr[2]);
+         	boolean tax = Boolean.parseBoolean(cmdArr[3]);
+         	return new GroceryItem(name, price, tax);
+     	}
+	
 	public void run() {
 		
 		ShoppingBag bag = new ShoppingBag();
