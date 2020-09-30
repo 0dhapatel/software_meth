@@ -4,7 +4,7 @@ public class AccountDatabase {
     
     private int size;
     
-    int defaultAccountSize = 5;
+    private int defaultAccountSize = 5;
     
     public AccountDatabase(){
         this.accounts = new Account[defaultAccountSize];
@@ -34,7 +34,7 @@ public class AccountDatabase {
     public boolean add(Account account) { 
         
         // already in the database
-        if(find(account)!=-1){
+        if(find(account) != -1){
             return false;
         }
             
@@ -73,9 +73,13 @@ public class AccountDatabase {
     
     private void sortByLastName() { } //sort in ascending order
     
-    public void printByDateOpen() { }
+    public void printByDateOpen() { 
+        sortByDateOpen();
+    }
     
-    public void printByLastName() { }
+    public void printByLastName() {
+        sortByLastName();
+    }
     
     public void printAccounts() { }
 }
