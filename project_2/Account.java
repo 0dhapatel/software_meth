@@ -3,14 +3,6 @@ public abstract class Account {
     private double balance;
     private Date dateOpen;
     
-    public Account(Profile holder, double balance, Date dateopen){
-        this.holder = holder;
-        this.balance = balance;
-        this.dateopne = dateopen;
-    }
-    
-    
-    
     public void debit(double amount) {
         
     } //decrease the balance by amount
