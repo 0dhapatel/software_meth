@@ -1,13 +1,36 @@
 public abstract class Account {
-    private Profile holder;
-    private double balance;
-    private Date dateOpen;
-    
-    public void debit(double amount) {
-        
-    } //decrease the balance by amount
-    public void credit(double amount) { } //increase the balance by amount
-    public String toString() { }
-    public abstract double monthlyInterest { }
-    public abstract double monthlyFee() { }
-}   
+	private Profile holder;
+	private double balance;
+	private Date dateOpen;
+	
+	public Account(Profile holder, double balance,Date dateOpen ) {
+		this.holder = holder;
+		this.balance = balance;
+		this.dateOpen = dateOpen;
+	}
+	 
+	public double getBalance() {
+		return balance;
+		
+	}
+	public void debit(double amount) {
+		balance -= amount;
+		
+	} //decrease the balance by amount
+	
+	public void credit(double amount) {
+		balance += amount;
+		
+	} //increase the balance by amount
+	
+	/**@override */
+	public String toString() { 
+		
+		
+	}
+	
+	
+	public abstract double monthlyInterest();
+	public abstract double monthlyFee();
+
+}
