@@ -59,7 +59,7 @@ public class AccountDatabase {
         else{
             this.size = this.size - 1; 
             this.accounts[key] = this.accounts[this.size]; 
-            this.accounts[this.size]=NULL;
+            this.accounts[this.size]=null;
       }
       return true; 
     } 
