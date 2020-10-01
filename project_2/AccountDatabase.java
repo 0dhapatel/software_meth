@@ -64,10 +64,27 @@ public class AccountDatabase {
       return true; 
     } 
     
-    public boolean deposit(Account account, double amount) { }
+    public boolean deposit(Account account, double amount) {
+        int key = find(account);
+        if (key==-1){
+            return false;
+        }
+        this.accounts[key].balance = this.accounts[key].balance + amount;
+        return true;
+    }
     
     //return 0: withdrawal successful, 1: insufficient funds, -1 account doesn’t exist
-    public int withdrawal(Account account, double amount) { }
+    public int withdrawal(Account account, double amount) {
+        int key = find(account);
+        if (key==-1){
+            return -1;
+        }
+        if (this.accounts[key].balance < amount){
+            return 1;
+        }
+        this.accounts[key].balance = this.accounts[key].balance - amount;
+        return 0;
+    }
     
     private void sortByDateOpen() { } //sort in ascending order
     
