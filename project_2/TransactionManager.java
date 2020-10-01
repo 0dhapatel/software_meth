@@ -90,21 +90,31 @@ public class TransactionManager {
 			case 'O':
 				if(cmdArray[1].charAt(1) == 'C') {
 					Checking checkingAccount = checkingInfo(cmdArray);
-					database.add(checkingAccount);
+					if(database.add(checkingAccount)){
 					System.out.println("Account opened and added to the database.");
-					
+					}
+					else {
+						System.out.println("Account is already in the database.");
+					}
 				}
 				else if(cmdArray[1].charAt(1) == 'S') {
 					Savings savingsAccount = savingsInfo(cmdArray);
-					database.add(savingsAccount);
+					if(database.add(savingsAccount)) {
 					System.out.println("Account opened and added to the database.");
-					
+					}
+					else {
+						System.out.println("Account is already in the database.");
+					}
 					
 				}
 				else if(cmdArray[1].charAt(1) == 'M') {
 					MoneyMarket moneyMarketAccount = moneyMarketInfo(cmdArray);
-					database.add(moneyMarketAccount);
-					System.out.println("Account opened and added to the database.");
+					if(database.add(moneyMarketAccount)) {
+						System.out.println("Account opened and added to the database.");
+					}
+					else {
+						System.out.println("Account is already in the database.");
+					}
 					
 				}
-				
+			}
