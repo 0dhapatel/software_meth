@@ -117,4 +117,42 @@ public class TransactionManager {
 					}
 					
 				}
-			}
+				
+				break;
+			// if the client inputs a 'R' followed by the name, price, and tax of a
+			// GroceryItem and the item is in the bag, the item will be remove
+			case 'C':
+				if(cmdArray[1].charAt(1) == 'C') {
+					Checking checkingAccount = checkingInfo(cmdArray);
+					if(database.remove(checkingAccount)){
+					System.out.println("Account closed and removed from the database.");
+					}
+					else {
+						System.out.println("Account does not exist.");
+					}
+				}
+				else if(cmdArray[1].charAt(1) == 'S') {
+					Savings savingsAccount = savingsInfo(cmdArray);
+					if(database.remove(savingsAccount)) {
+					System.out.println("Account closed and removed from the database.");
+					}
+					else {
+						System.out.println("Account does not exist.");
+					}
+					
+				}
+				else if(cmdArray[1].charAt(1) == 'M') {
+					MoneyMarket moneyMarketAccount = moneyMarketInfo(cmdArray);
+					if(database.remove(moneyMarketAccount)) {
+						System.out.println("Account closed and removed from the database.");
+					}
+					else {
+						System.out.println("Account does not exist.");
+					}
+					
+				}
+				
+
+				
+
+				break;
