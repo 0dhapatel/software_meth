@@ -92,11 +92,14 @@ public class AccountDatabase {
     
     public void printByDateOpen() { 
         sortByDateOpen();
+        
     }
     
     public void printByLastName() {
         sortByLastName();
     }
     
-    public void printAccounts() { }
+    public void printAccounts() {
+        
+    }
 }
