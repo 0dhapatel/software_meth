@@ -1,14 +1,3 @@
-import java.text.DecimalFormat;
-import java.util.Scanner;
-
-/**
- * 
- */
-
-/**
- * @author Jei Mota
- *
- */
 public class TransactionManager {
 	/**
 	 *This is an instance of a ShoppingBag class.
@@ -31,7 +20,7 @@ public class TransactionManager {
 		String lname = cmdArr[3];
 		Profile holder = new Profile(fname, lname);
 		double balance = Double.parseDouble(cmdArr[4]);
-		boolean directDeposit = true;
+		boolean directDeposit = Boolean.parseBoolean(cmdArr[5]);
 		Date dateOpen = new Date(0, 0, 0);;
 		return new Checking(directDeposit, holder, balance, dateOpen);
 	}
@@ -41,7 +30,7 @@ public class TransactionManager {
 		String lname = cmdArr[3];
 		Profile holder = new Profile(fname, lname);
 		double balance = Double.parseDouble(cmdArr[4]);
-		boolean isLoyal = true;
+		boolean isLoyal = Boolean.parseBoolean(cmdArr[5]);
 		Date dateOpen = new Date(0, 0, 0);;
 		return new Savings(isLoyal, holder, balance, dateOpen);
 	}
@@ -151,8 +140,108 @@ public class TransactionManager {
 					}
 					
 				}
-				
-
-				
 
 				break;
+			// if the client inputs a 'P' and the bag is not empty, the bag's item are going
+			// to be printed.
+			case 'D':
+				if(cmdArray[1].charAt(1) == 'C') {
+					Checking checkingAccount = checkingInfo(cmdArray);
+					double amount =  Double.parseDouble(cmdArray[4]);
+					if(database.deposit(checkingAccount, amount)){
+					System.out.println(amount + " deposited to account. ");
+					}
+					else {
+						System.out.println("Account does not exist.");
+					}
+				}
+				else if(cmdArray[1].charAt(1) == 'S') {
+					Savings savingsAccount = savingsInfo(cmdArray);
+					double amount =  Double.parseDouble(cmdArray[4]);
+					if(database.deposit(savingsAccount, amount)){
+					System.out.println(amount + " deposited to account. ");
+					}
+					else {
+						System.out.println("Account does not exist.");
+					}
+					
+				}
+				else if(cmdArray[1].charAt(1) == 'M') {
+					MoneyMarket moneyMarketAccount = moneyMarketInfo(cmdArray);
+					double amount =  Double.parseDouble(cmdArray[4]);
+					if(database.deposit(moneyMarketAccount, amount)){
+						System.out.println(amount + " deposited to account. ");
+					}
+					else {
+						System.out.println("Account does not exist.");
+					}
+					
+				}
+				break;
+			// If the user inputs a 'C' and the bag is empty, the number of items and
+			// their sales, tax, and amount paid are going to be printed
+			case 'W':
+				if(cmdArray[1].charAt(1) == 'C') {
+					Checking checkingAccount = checkingInfo(cmdArray);
+					double amount =  Double.parseDouble(cmdArray[4]);
+					if(database.withdrawal(checkingAccount, amount) == 0){
+					System.out.println(amount + "  withdrawn from account. ");
+					}
+					else if(database.withdrawal(checkingAccount, amount) == 1){
+						System.out.println("Insufficient funds.");
+					}
+					else {
+						System.out.println("Account does not exist.");
+					}
+				}
+				else if(cmdArray[1].charAt(1) == 'S') {
+					Savings savingsAccount = savingsInfo(cmdArray);
+					double amount =  Double.parseDouble(cmdArray[4]);
+					if(database.withdrawal(savingsAccount, amount)== 0){
+					System.out.println(amount + "  withdrawn from account. ");
+					}
+					else if(database.withdrawal(savingsAccount, amount) == 1){
+						System.out.println("Insufficient funds.");
+					}
+					else {
+						System.out.println("Account does not exist.");
+					}
+				}
+				else if(cmdArray[1].charAt(1) == 'M') {
+					MoneyMarket moneyMarketAccount = moneyMarketInfo(cmdArray);
+					double amount =  Double.parseDouble(cmdArray[4]);
+					if(database.withdrawal(moneyMarketAccount, amount) == 0){
+						System.out.println(amount + "  withdrawn from account. ");
+					}
+					else if(database.withdrawal(moneyMarketAccount, amount) == 1){
+						System.out.println("Insufficient funds.");
+					}
+					else {
+						System.out.println("Account does not exist.");
+					}
+				}
+
+				break;
+
+			// If the client inputs a 'Q' and the bag is empty the program will end,
+			// otherwise, the number of items and their sales, tax, and amount paid are
+			// going to be printed
+			case 'P':
+				if(cmdArray[1].charAt(1) == 'A') {}
+				else if(cmdArray[1].charAt(1) == 'D') {}
+				else if(cmdArray[1].charAt(1) == 'N') {}
+				
+				
+				break;
+			case 'Q':
+				System.out.println("Transaction processing completed");
+				inSession = false;
+				break;
+			default:
+				System.out.println("Invalid command!");
+				break;
+			}
+
+		}
+	}
+}
