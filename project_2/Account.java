@@ -10,9 +10,18 @@ public abstract class Account {
 	}
 	 
 	public double getBalance() {
-		return balance;
+		return this.balance;
 		
 	}
+	
+	public String getLname(){
+		return holder.get_lname;
+	}
+	
+	public String getfname(){
+		return holder.get_fname;
+	}
+	
 	public void debit(double amount) {
 		balance -= amount;
 		
