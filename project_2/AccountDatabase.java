@@ -88,7 +88,33 @@ public class AccountDatabase {
     
     private void sortByDateOpen() { } //sort in ascending order
     
-    private void sortByLastName() { } //sort in ascending order
+    //sort in ascending order
+    private void sortByLastName() { 
+        for(int i=0; i<size; i++)
+        {
+            for(int j=1; j<size; j++)
+            {
+                if(accounts[j-1].account.getFname().compareTo(accounts[j]account.getFname())>0)
+                {
+                    temp=accounts[j-1];
+                    accounts[j-1]=accounts[j];
+                    accounts[j]=temp;
+                }
+            }
+        }
+        for(int i=0; i<size; i++)
+        {
+            for(int j=1; j<size; j++)
+            {
+                if(accounts[j-1].account.getLname().compareTo(accounts[j]account.getLname())>0)
+                {
+                    temp=accounts[j-1];
+                    accounts[j-1]=accounts[j];
+                    accounts[j]=temp;
+                }
+            }
+        }
+    } 
     
     public void printByDateOpen() { 
         sortByDateOpen();
