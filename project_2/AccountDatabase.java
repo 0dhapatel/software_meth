@@ -100,6 +100,8 @@ public class AccountDatabase {
     }
     
     public void printAccounts() {
-        
+        for (int i = 0; i < size; i++) {
+            System.out.println(accounts[i].toString());
+        }
     }
 }
