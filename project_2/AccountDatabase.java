@@ -69,7 +69,7 @@ public class AccountDatabase {
         if (key==-1){
             return false;
         }
-        this.accounts[key].balance = this.accounts[key].balance + amount;
+        this.accounts[key].credit(amount);
         return true;
     }
     
@@ -79,10 +79,10 @@ public class AccountDatabase {
         if (key==-1){
             return -1;
         }
-        if (this.accounts[key].balance < amount){
+        if (this.accounts[key].getBalance < amount){
             return 1;
         }
-        this.accounts[key].balance = this.accounts[key].balance - amount;
+        this.accounts[key].debit(amount);
         return 0;
     }
     
