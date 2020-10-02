@@ -40,27 +40,29 @@ public class Date implements Comparable<Date> {
     } 
     
     public boolean isValid() { 
-        if (this.month > 0 && this.month < 13){
-            if(this.month == 2){
-                if(this.year % 4 == 0){
-                    if(this.day > 0 && this.day 29){
+        if (this.year>0){
+            if (this.month > 0 && this.month < 13){
+                if(this.month == 2){
+                    if(this.year % 4 == 0){
+                        if(this.day > 0 && this.day <= 29){
+                            return true;
+                        }
+                    }
+                    else{
+                        if(this.day > 0 && this.day <= 28){
+                            return true;
+                        }
+                    }
+                }
+                elseif(this.month == 4 && this.month == 6 && this.month == 9 && this.month == 11){
+                    if(this.day > 0 && this.day <= 30){
                         return true;
                     }
                 }
                 else{
-                    if(this.day > 0 && this.day 28){
+                    if(this.day > 0 && this.day <= 31){
                         return true;
                     }
-                }
-            }
-            elseif(this.month == 4 && this.month == 6 && this.month == 9 && this.month == 11){
-                if(this.day > 0 && this.day 30){
-                    return true;
-                }
-            }
-            else{
-                if(this.day > 0 && this.day 31){
-                    return true;
                 }
             }
         }
