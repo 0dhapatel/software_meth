@@ -94,7 +94,7 @@ public class AccountDatabase {
         {
             for(int j=1; j<size; j++)
             {
-                if(accounts[j-1].account.getFname().compareTo(accounts[j]account.getFname())>0)
+                if(accounts[j-1].getFname().compareTo(accounts[j].getFname())>0)
                 {
                     temp=accounts[j-1];
                     accounts[j-1]=accounts[j];
@@ -106,7 +106,7 @@ public class AccountDatabase {
         {
             for(int j=1; j<size; j++)
             {
-                if(accounts[j-1].account.getLname().compareTo(accounts[j]account.getLname())>0)
+                if(accounts[j-1].getLname().compareTo(accounts[j].getLname())>0)
                 {
                     temp=accounts[j-1];
                     accounts[j-1]=accounts[j];
