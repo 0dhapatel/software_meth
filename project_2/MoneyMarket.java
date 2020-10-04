@@ -13,10 +13,10 @@ public class MoneyMarket extends Account{
 	public String toString(){
 		String withdrawalsString = "";
 		if(withdrawals == 1){
-			withdrawalsString = "1 withdrawl*";
+			withdrawalsString = "*1 withdrawl*";
 		}
 		else{
-			withdrawalsString = withdrawals +" withdrawals*";
+			withdrawalsString = "*" + withdrawals +" withdrawals*";
 		}
 		return "*Money Market*" + super.toString + withdrawalsString;
 	}
