@@ -22,6 +22,18 @@ public abstract class Account {
 		return holder.get_fname;
 	}
 	
+	 public int getYear(){
+        	return dateOpen.getYear();
+    	}
+    
+    	public int getMonth(){
+        	return dateOpen.getMonth();
+    	}
+    
+    	public int getDay(){
+        	return dateOpen.getDay();
+    	}
+	
 	public void debit(double amount) {
 		balance -= amount;
 		
