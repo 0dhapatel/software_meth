@@ -6,6 +6,10 @@ public class AccountDatabase {
     
     private int defaultAccountSize = 5;
     
+    public int getSize(){
+        return this.size;
+    }
+    
     public AccountDatabase(){
         this.accounts = new Account[defaultAccountSize];
         int size = 0;
