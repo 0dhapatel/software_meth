@@ -14,7 +14,7 @@ public class Checking  extends Account  {
 	public String toString(){
 		String directDepostString = "";
 		if(this.directDeposit){
-			directDepostString = "direct deposit account*";
+			directDepostString = "*direct deposit account*";
 		}
 		return "*Checking*" + super.toString + directDepostString;
 	}
