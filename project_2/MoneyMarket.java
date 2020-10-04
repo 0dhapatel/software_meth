@@ -7,7 +7,19 @@ public class MoneyMarket extends Account{
 	public MoneyMarket(int withdrawals, Profile holder, double balance, Date dateOpen ) {
 		super(holder, balance, dateOpen);
 		this.withdrawals = withdrawals;
+	}
+	
+	//override
+	public String toString(){
+		String withdrawalsString = "";
+		if(withdrawals == 1){
+			withdrawalsString = "1 withdrawl*";
 		}
+		else{
+			withdrawalsString = withdrawals +" withdrawals";
+		}
+		return "*Money Market*" + super.toString + withdrawalsString;
+	}
 
 	public double monthlyInterest() {
 		return (super.getBalance() * annualInterestRate) / 12;
