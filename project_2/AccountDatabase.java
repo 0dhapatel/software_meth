@@ -162,6 +162,13 @@ public class AccountDatabase {
         sortByDateOpen();
         for (int i = 0; i < size; i++) {
             System.out.println(accounts[i].toString());
+            String interestString = accounts[i].accountInterest();
+            System.out.println("-interest: $ " + interestString);
+            String feeString = accounts[i].accountFee();
+            System.out.println("-fee: $ " + feeString);
+            String balanceString = ;
+            System.out.println("-new balance: $ " + balanceString);
+            System.out.println();
         }
     }
     
