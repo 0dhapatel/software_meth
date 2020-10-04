@@ -9,6 +9,15 @@ public class Savings  extends Account{
 		this.isLoyal = isLoyal;
 		}
 
+	//override
+	public String toString(){
+		String isLoyalString = "";
+		if(this.isLoyal){
+			isLoyalString = "special Savings account*";
+		}
+		return "*Savings*" + super.toString + isLoyalString;
+	}
+	
 	public double monthlyInterest() {
 		return (super.getBalance() * annualInterestRate) / 12;
 			
