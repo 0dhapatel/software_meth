@@ -10,7 +10,14 @@ public class Checking  extends Account  {
 		this.directDeposit = directDeposit;
 		}
 	
-	
+	//override
+	public String toString(){
+		String directDepostString = "";
+		if(this.directDeposit){
+			directDepostString = "direct deposit account";
+		}
+		return "*Checking*" + super.toString + directDepostString;
+	}
 	
 	public double monthlyInterest() {
 	return (super.getBalance() * annualInterestRate) / 12;
