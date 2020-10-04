@@ -32,9 +32,9 @@ public abstract class Account {
 		
 	} //increase the balance by amount
 	
-	/**@override */
+	
 	public String toString() { 
-		return holder.get_fname + " " + holder.get_lname + "* $" + this.balance + "*";
+		return holder.get_fname + " " + holder.get_lname + "* $" + this.balance + "*" + this.dateOpen.toString() + "*";
 	}
 	
 	
