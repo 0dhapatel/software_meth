@@ -16,7 +16,7 @@ public class MoneyMarket extends Account{
 			withdrawalsString = "1 withdrawl*";
 		}
 		else{
-			withdrawalsString = withdrawals +" withdrawals";
+			withdrawalsString = withdrawals +" withdrawals*";
 		}
 		return "*Money Market*" + super.toString + withdrawalsString;
 	}
