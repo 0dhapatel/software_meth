@@ -34,8 +34,7 @@ public abstract class Account {
 	
 	/**@override */
 	public String toString() { 
-		
-		
+		return holder.get_fname + " " + holder.get_lname + "* $" + this.balance + "*";
 	}
 	
 	
