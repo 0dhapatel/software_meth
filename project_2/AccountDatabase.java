@@ -86,7 +86,10 @@ public class AccountDatabase {
         return 0;
     }
     
-    private void sortByDateOpen() { } //sort in ascending order
+    //sort in ascending order
+    private void sortByDateOpen() { 
+        
+    } 
     
     //sort in ascending order
     private void sortByLastName() { 
