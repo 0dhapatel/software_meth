@@ -13,7 +13,7 @@ public class Savings  extends Account{
 	public String toString(){
 		String isLoyalString = "";
 		if(this.isLoyal){
-			isLoyalString = "special Savings account*";
+			isLoyalString = "*special Savings account*";
 		}
 		return "*Savings*" + super.toString + isLoyalString;
 	}
