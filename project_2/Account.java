@@ -46,7 +46,7 @@ public abstract class Account {
 	
 	
 	public String toString() { 
-		return holder.get_fname + " " + holder.get_lname + "* $" + this.balance + "*" + this.dateOpen.toString() + "*";
+		return holder.get_fname + " " + holder.get_lname + "* $" + this.balance + "*" + this.dateOpen.toString();
 	}
 	
 	
