@@ -12,6 +12,18 @@ public class Date implements Comparable<Date> {
         this.day = day;
     }
     
+    public int getYear(){
+        return this.year;
+    }
+    
+    public int getMonth(){
+        return this.month;
+    }
+    
+    public int getDay(){
+        return this.day;
+    }
+    
     public int compareTo(Date date) { //return 0, 1, or -1
         if(this.year > date.year){
             return 1;
