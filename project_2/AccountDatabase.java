@@ -94,11 +94,12 @@ public class AccountDatabase {
     
     //sort in ascending order
     private void sortByDateOpen() { 
+        Account temp;
         for(int i=0; i<size; i++)
         {
             for(int j=1; j<size; j++)
             {
-                if(accounts[j-1].getDay().compareTo(accounts[j].getDay())>0)
+                if(accounts[j-1].getDay()>accounts[j].getDay())
                 {
                     temp=accounts[j-1];
                     accounts[j-1]=accounts[j];
@@ -110,7 +111,7 @@ public class AccountDatabase {
         {
             for(int j=1; j<size; j++)
             {
-                if(accounts[j-1].getMonth().compareTo(accounts[j].getMonth())>0)
+                if(accounts[j-1].getMonth()>accounts[j].getMonth())
                 {
                     temp=accounts[j-1];
                     accounts[j-1]=accounts[j];
@@ -122,7 +123,7 @@ public class AccountDatabase {
         {
             for(int j=1; j<size; j++)
             {
-                if(accounts[j-1].getYear().compareTo(accounts[j].getYear())>0)
+                if(accounts[j-1].getYear()>accounts[j].getYear())
                 {
                     temp=accounts[j-1];
                     accounts[j-1]=accounts[j];
@@ -134,6 +135,7 @@ public class AccountDatabase {
     
     //sort in ascending order
     private void sortByLastName() { 
+        Accouunt temp;
         for(int i=0; i<size; i++)
         {
             for(int j=1; j<size; j++)
