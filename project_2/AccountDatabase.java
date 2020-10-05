@@ -6,6 +6,8 @@ public class AccountDatabase {
     
     private int defaultAccountSize = 5;
     
+    private static DecimalFormat df2 = new DecimalFormat("0.00"); 
+    
     public int getSize(){
         return this.size;
     }
@@ -162,12 +164,12 @@ public class AccountDatabase {
         sortByDateOpen();
         for (int i = 0; i < size; i++) {
             System.out.println(accounts[i].toString());
-            String interestString = accounts[i].accountInterest();
+            String interestString = df2.format(accounts[i].monthlyInterest());
             System.out.println("-interest: $ " + interestString);
-            String feeString = accounts[i].accountFee();
+            String feeString = df2.format.(accounts[i].monthlyFee());
             System.out.println("-fee: $ " + feeString);
-            String balanceString = ;
-            System.out.println("-new balance: $ " + balanceString);
+            Double balanceString = accounts[i].balance() + accounts[i].monthlyInterest() + accounts[i].monthlyFee();
+            System.out.println("-new balance: $ " + df2.format(balanceString));
             System.out.println();
         }
     }
@@ -176,6 +178,13 @@ public class AccountDatabase {
         sortByLastName();
         for (int i = 0; i < size; i++) {
             System.out.println(accounts[i].toString());
+            String interestString = df2.format(accounts[i].monthlyInterest());
+            System.out.println("-interest: $ " + interestString);
+            String feeString = df2.format.(accounts[i].monthlyFee());
+            System.out.println("-fee: $ " + feeString);
+            Double balanceString = accounts[i].balance() + accounts[i].monthlyInterest() + accounts[i].monthlyFee();
+            System.out.println("-new balance: $ " + df2.format(balanceString));
+            System.out.println();
         }
     }
     
