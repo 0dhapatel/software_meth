@@ -15,23 +15,23 @@ public abstract class Account {
 	}
 	
 	public String getLname(){
-		return holder.get_lname;
+		return this.holder.get_lname;
 	}
 	
 	public String getfname(){
-		return holder.get_fname;
+		return this.holder.get_fname;
 	}
 	
 	 public int getYear(){
-        	return dateOpen.getYear();
+        	return this.dateOpen.getYear();
     	}
     
     	public int getMonth(){
-        	return dateOpen.getMonth();
+        	return this.dateOpen.getMonth();
     	}
     
     	public int getDay(){
-        	return dateOpen.getDay();
+        	return this.dateOpen.getDay();
     	}
 	
 	public void debit(double amount) {
