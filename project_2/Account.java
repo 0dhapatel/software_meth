@@ -21,17 +21,9 @@ public abstract class Account {
 	public String getfname(){
 		return this.holder.get_fname;
 	}
-	
-	 public int getYear(){
-        	return this.dateOpen.getYear();
-    	}
     
-    	public int getMonth(){
-        	return this.dateOpen.getMonth();
-    	}
-    
-    	public int getDay(){
-        	return this.dateOpen.getDay();
+    	public int dateCompare(Date date){
+        	return this.dateOpen.compareTo(date);
     	}
 	
 	public void debit(double amount) {
