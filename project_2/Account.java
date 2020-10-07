@@ -21,6 +21,10 @@ public abstract class Account {
 	public String getfname(){
 		return this.holder.get_fname;
 	}
+	
+	public Date getDate(){
+		return this.dateOpen;
+	}
     
     	public int dateCompare(Date date){
         	return this.dateOpen.compareTo(date);
