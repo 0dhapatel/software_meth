@@ -114,9 +114,10 @@ public class AccountDatabase {
             }
         }
 	}
+	
+	// sort in ascending order
 	private void sortByLastName() {
 		Account temp;
-
 		for (int i = 0; i < size; i++) {
 			for (int j = 1; j < size; j++) {
 				if (accounts[j - 1].getFname().compareTo(accounts[j].getFname()) > 0) {
@@ -135,7 +136,7 @@ public class AccountDatabase {
 				}
 			}
 		}
-	} // sort in ascending order
+	} 
 
 	public void printByDateOpen() {
 		sortByDateOpen();
@@ -149,7 +150,6 @@ public class AccountDatabase {
 			System.out.println("-new balance: $ " + df2.format(balanceString));
 			System.out.println();
 		}
-
 	}
 
 	public void printByLastName() {
@@ -169,6 +169,6 @@ public class AccountDatabase {
 	public void printAccounts() {
     	for (int i = 0; i < size; i++) {
             System.out.println(accounts[i].toString());
-        
+    	}
     }
 }
