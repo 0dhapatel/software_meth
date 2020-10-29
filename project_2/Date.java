@@ -1,5 +1,4 @@
 
-
 package application;
 
 /**
@@ -123,18 +122,21 @@ public class Date implements Comparable<Date> {
 
 			// Checks February
 			if (this.month == 2) {
-				if (this.year % 4 == 0) {
-					if (this.year % 100 == 0) {
-						if (this.year % 400 == 0) {
-
-							if (this.day > 0 && this.day <= 29) {
+				if (this.day > 0 && this.day <= 28) {
+					return true;
+				} else if (this.day == 29) {
+					if (this.year % 4 == 0) {
+						if (this.year % 100 == 0) {
+							if (this.year % 400 == 0) {
 								return true;
+							} else {
+								return false;
 							}
+						} else {
+							return true;
 						}
-					}
-				} else {
-					if (this.day > 0 && this.day <= 28) {
-						return true;
+					} else {
+						return false;
 					}
 				}
 				// Checks April, June, September, and November
