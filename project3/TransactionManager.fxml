@@ -3,88 +3,105 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="600.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-        <BorderPane>
-            <left>
-                <Label text="First Name" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets right="15.0" />
-               </BorderPane.margin>
-            </Label>
-            </left>
-            <center>
-                <TextField fx:id="firstName" prefHeight="25.0" prefWidth="413.0" BorderPane.alignment="CENTER">
-                    </TextField>
-            </center>
-         <padding>
-            <Insets bottom="10.0" left="100.0" right="100.0" top="10.0" />
-         </padding>
-         <VBox.margin>
-            <Insets top="15.0" />
-         </VBox.margin>
-      </BorderPane>
-      <BorderPane>
-         <left>
-            <Label text="Last Name" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets right="15.0" />
-               </BorderPane.margin>
-            </Label>
-         </left>
-         <center>
-            <TextField fx:id="lastName" prefHeight="25.0" prefWidth="413.0" BorderPane.alignment="CENTER" />
-         </center>
-         <padding>
-            <Insets bottom="10.0" left="100.0" right="100.0" top="10.0" />
-         </padding>
-      </BorderPane>
-      <BorderPane>
-         <left>
-            <Label text="Number of Credits" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets right="15.0" />
-               </BorderPane.margin>
-            </Label>
-         </left>
-         <center>
-            <TextField fx:id="numCredits" prefHeight="25.0" prefWidth="413.0" BorderPane.alignment="CENTER" />
-         </center>
-         <padding>
-            <Insets bottom="10.0" left="100.0" right="100.0" top="10.0" />
-         </padding>
-      </BorderPane>
-        <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="120.0" prefWidth="643.0">
-         <VBox.margin>
-            <Insets left="30.0" right="30.0" />
-         </VBox.margin>
+<BorderPane prefHeight="776.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <bottom>
+      <TextArea fx:id="messageArea" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </TextArea>
+   </bottom>
+   <left>
+      <GridPane alignment="CENTER" hgap="10.0" prefHeight="509.0" prefWidth="643.0" vgap="10.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="456.0" minWidth="10.0" prefWidth="396.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.0" minWidth="0.0" prefWidth="137.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="80.0" />
+            <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+          <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+          <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="106.0" layoutY="2.0" stroke="#90909042" strokeType="INSIDE" width="400.0" />
-            <RadioButton fx:id="instate" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onRadioPressed" text="INSTATE">
-            <toggleGroup>
-               <ToggleGroup fx:id="group" />
-            </toggleGroup></RadioButton>
-            <RadioButton fx:id="outstate" layoutX="14.0" layoutY="45.0" mnemonicParsing="false" onAction="#onRadioPressed" text="OUTSTATE" toggleGroup="$group" />
-            <RadioButton fx:id="international" layoutX="14.0" layoutY="76.0" mnemonicParsing="false" onAction="#onRadioPressed" text="INTERNATIONAL" toggleGroup="$group" />
-            <CheckBox fx:id="funding" layoutX="144.0" layoutY="14.0" mnemonicParsing="false" text="Funding" />
-            <CheckBox fx:id="tristate" layoutX="144.0" layoutY="46.0" mnemonicParsing="false" text="Tri-State Student" />
-            <CheckBox fx:id="exchangeStudent" layoutX="144.0" layoutY="76.0" mnemonicParsing="false" text="Exchange Student" />
-            <TextField fx:id="fundingValue" layoutX="301.0" layoutY="12.0" prefWidth="87.0" />
-            <Button fx:id="add" layoutX="419.0" layoutY="6.0" mnemonicParsing="false" onAction="#onButtonPressed" prefHeight="27.0" prefWidth="107.0" text="Add" />
-            <Button fx:id="remove" layoutX="419.0" layoutY="40.0" mnemonicParsing="false" onAction="#onButtonPressed" prefHeight="27.0" prefWidth="107.0" text="Remove" />
-            <Button fx:id="print" layoutX="419.0" layoutY="75.0" mnemonicParsing="false" onAction="#onButtonPressed" prefHeight="27.0" prefWidth="107.0" text="Print" />
-         <Text layoutX="290.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" />
-         </children></Pane>
-        <TextArea fx:id="output" prefHeight="285.0" prefWidth="643.0" />
-</VBox>
+            <Label prefHeight="17.0" prefWidth="405.0" text="First Name" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
+            <Label prefHeight="17.0" prefWidth="416.0" text="Last Name" GridPane.halignment="RIGHT" GridPane.rowIndex="11" />
+            <TextField fx:id="int1" onMouseExited="#checkInteger1" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <TextField fx:id="int2" onKeyPressed="#checkInteger2" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <TextField fx:id="sum" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="13">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </TextField>
+            <Button fx:id="importButton" mnemonicParsing="false" onAction="#importFile" prefHeight="25.0" prefWidth="161.0" text="Open Account" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="17" />
+            <Button fx:id="exportButton" mnemonicParsing="false" onAction="#exportFile" prefHeight="25.0" prefWidth="162.0" text="Clear" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="21" />
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="160.0" text="Close Account" GridPane.columnIndex="2" GridPane.rowIndex="19" />
+            <Label prefHeight="17.0" prefWidth="217.0" text="Date Open" GridPane.rowIndex="13" />
+            <Label prefHeight="17.0" prefWidth="156.0" text="Balance" GridPane.rowIndex="15" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="15" />
+            <RadioButton mnemonicParsing="false" text="Checking" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+            <RadioButton mnemonicParsing="false" text="Savings" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+            <RadioButton mnemonicParsing="false" text="Money Market" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+            <RadioButton mnemonicParsing="false" text="Direct Deposit" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+            <RadioButton mnemonicParsing="false" text="Loyal Customer" GridPane.columnIndex="2" GridPane.rowIndex="14" />
+            <TabPane prefHeight="30.0" prefWidth="455.0" tabClosingPolicy="UNAVAILABLE" GridPane.rowIndex="8">
+              <tabs>
+                <Tab text="Open/Close Account">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                <Tab text="Deposit/Withdraw funds">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+         <BorderPane.margin>
+            <Insets left="50.0" right="50.0" top="50.0" />
+         </BorderPane.margin>
+      </GridPane>
+   </left>
+</BorderPane>
