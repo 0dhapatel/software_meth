@@ -1,13 +1,7 @@
+package application;
+
 import java.text.DecimalFormat;
 import java.util.Scanner;
-
-import application.Account;
-import application.AccountDatabase;
-import application.Checking;
-import application.Date;
-import application.MoneyMarket;
-import application.Profile;
-import application.Savings;
 
 /**
  * This class manages the user's input to take actions like adding, removing,
@@ -230,7 +224,7 @@ public class TransactionManager {
 				Account checkingAccount = checkInfo(cmdArray);
 				double amount = Double.parseDouble(cmdArray[3]);
 				if (database.deposit(checkingAccount, amount)) {
-					System.out.println(amount + " deposited to account. ");
+					System.out.println(df2.format(amount) + " deposited to account. ");
 				} else {
 					System.out.println("Account does not exist.");
 				}
@@ -238,7 +232,7 @@ public class TransactionManager {
 				Account savingsAccount = saveInfo(cmdArray);
 				double amount = Double.parseDouble(cmdArray[3]);
 				if (database.deposit(savingsAccount, amount)) {
-					System.out.println(amount + " deposited to account. ");
+					System.out.println(df2.format(amount) + " deposited to account. ");
 				} else {
 					System.out.println("Account does not exist.");
 				}
@@ -247,7 +241,7 @@ public class TransactionManager {
 				Account moneyMarketAccount = MarketInfo(cmdArray);
 				double amount = Double.parseDouble(cmdArray[3]);
 				if (database.deposit(moneyMarketAccount, amount)) {
-					System.out.println(amount + " deposited to account. ");
+					System.out.println(df2.format(amount) + " deposited to account. ");
 				} else {
 					System.out.println("Account does not exist.");
 				}
@@ -274,7 +268,7 @@ public class TransactionManager {
 				Account checkingAccount = checkInfo(cmdArray);
 				double amount = Double.parseDouble(cmdArray[3]);
 				if (database.withdrawal(checkingAccount, amount) == 0) {
-					System.out.println(amount + "  withdrawn from account. ");
+					System.out.println(df2.format(amount) + "  withdrawn from account. ");
 				} else if (database.withdrawal(checkingAccount, amount) == 1) {
 					System.out.println("Insufficient funds.");
 				} else {
@@ -284,7 +278,7 @@ public class TransactionManager {
 				Account savingsAccount = saveInfo(cmdArray);
 				double amount = Double.parseDouble(cmdArray[3]);
 				if (database.withdrawal(savingsAccount, amount) == 0) {
-					System.out.println(amount + "  withdrawn from account. ");
+					System.out.println(df2.format(amount) + "  withdrawn from account. ");
 				} else if (database.withdrawal(savingsAccount, amount) == 1) {
 					System.out.println("Insufficient funds.");
 				} else {
@@ -294,7 +288,7 @@ public class TransactionManager {
 				Account moneyMarketAccount = MarketInfo(cmdArray);
 				double amount = Double.parseDouble(cmdArray[3]);
 				if (database.withdrawal(moneyMarketAccount, amount) == 0) {
-					System.out.println(amount + "  withdrawn from account. ");
+					System.out.println(df2.format(amount) + "  withdrawn from account. ");
 				} else if (database.withdrawal(moneyMarketAccount, amount) == 1) {
 					System.out.println("Insufficient funds.");
 				} else {
@@ -329,7 +323,7 @@ public class TransactionManager {
 	 * @return  "true".equals(check) || "false".equals(check)
 	 */
 	private boolean bool(String check) {
-		return "true".equals(check) || "false".equals(check);
+		return "true".equals(check.toLowerCase()) || "false".equals(check.toLowerCase());
 
 	}
 
@@ -345,9 +339,9 @@ public class TransactionManager {
 		boolean inSession = true;
 		System.out.println("Transaction processing starts.....");
 		Scanner keyboard = new Scanner(System.in);
-
 		// this is a loop that stops when the client types the character 'Q'
 		while (inSession) {
+			//Scanner keyboard = new Scanner(System.in);
 			String inputCmd = keyboard.nextLine();
 			String[] cmdArray = inputCmd.split(" ");
 			char userImput = cmdArray[0].charAt(0);
@@ -361,10 +355,12 @@ public class TransactionManager {
 					} else {
 						if (!date(cmdArray[4])) {
 							System.out.println(cmdArray[4] + " is not a valid date!");
-
 						} else if (cmdArray[0].charAt(1) == 'C' || cmdArray[0].charAt(1) == 'S') {
-							if (!bool(cmdArray[5])) {
+							//System.out.println(bool(cmdArray[5]));
+							if (!(bool(cmdArray[5]))) {
 								System.out.println("Input data type mismatch.");
+							} else {
+								open(cmdArray);
 							}
 						} else {
 							open(cmdArray);
@@ -443,6 +439,7 @@ public class TransactionManager {
 			case 'Q':
 				System.out.println("Transaction processing completed");
 				inSession = false;
+				keyboard.close();
 				break;
 			default:
 				System.out.println("Command '" + cmdArray[0] + "' not supported!");
