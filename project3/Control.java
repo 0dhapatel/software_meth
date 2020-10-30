@@ -123,18 +123,18 @@ public class Controller {
 		try {
 			Account checkingAccount = accountType(cmdArray);
 			if (database.remove(checkingAccount)) {
-				output.appendText("Account closed and removed from the database.");
+				output.appendText("Account closed and removed from the database.\n");
 			} else {
-				output.appendText("Account does not exist.");
+				output.appendText("Account does not exist.\n");
 			}
 
 		} catch (Exception e) {
-			output.appendText("Input data type mismatch.");
+			output.appendText("Input data type mismatch.\n");
 
 		}
 	}
 	
-	private String [] createArray () {
+	private String [] createOpenArray () {
 		String[] cmd = new String [8];
 		cmd[1] = firstName.getText();
 		cmd[2] = lastName.getText();
@@ -163,9 +163,23 @@ public class Controller {
 		return cmd;
 	}
 	
+	private String [] createArray () {
+		String[] cmd = new String [3];
+		cmd[1] = firstName.getText();
+		cmd[2] = lastName.getText();
+		if (radioB.getSelectedToggle().equals(checking)) {
+			cmd[0] = "C";
+		} else if (radioB.getSelectedToggle().equals(savings)) {
+			cmd[0] = "S";
+		} else if (radioB.getSelectedToggle().equals(moneyMarket)) {
+			cmd[0] = "M";
+		}
+		return cmd;
+	}
+	
 	public void onButtonClicked (ActionEvent event) {
 		if (event.getSource().equals(openAccount)) {
-			String [] cmdArray = createArray();
+			String [] cmdArray = createOpenArray();
 			open(cmdArray);
 			return;
 		} else if (event.getSource().equals(closeAccount)) {
