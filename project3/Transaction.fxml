@@ -60,11 +60,11 @@
 									prefHeight="180.0" prefWidth="200.0">
 									<children>
 										<Label layoutX="82.0" layoutY="56.0" prefHeight="17.0" prefWidth="66.0" text="First Name" />
-										<TextField fx:id="firstName" editable="false" layoutX="211.0" layoutY="52.0"/>
+										<TextField fx:id="firstName2" editable="false" layoutX="211.0" layoutY="52.0"/>
 										<Label layoutX="82.0" layoutY="94.0" prefHeight="17.0" prefWidth="68.0" text="Last Name" />
-										<TextField fx:id="lastName" layoutX="211.0" layoutY="90.0"/>
+										<TextField fx:id="lastName2" layoutX="211.0" layoutY="90.0"/>
 										<Label layoutX="82.0" layoutY="134.0" prefHeight="17.0" prefWidth="56.0" text="Amount" />
-										<TextField layoutX="211.0" layoutY="130.0" text="3"/>
+										<TextField fx:id="amount" layoutX="211.0" layoutY="130.0"/>
 										<RadioButton layoutX="458.0" layoutY="122.0" mnemonicParsing="false" text="Checking" />
 										<RadioButton layoutX="455.0" layoutY="86.0" mnemonicParsing="false" text="Savings" />
 										<RadioButton layoutX="455.0" layoutY="48.0" mnemonicParsing="false" text="Money Market" />
