@@ -65,9 +65,13 @@
 										<TextField fx:id="lastName2" layoutX="211.0" layoutY="90.0"/>
 										<Label layoutX="82.0" layoutY="134.0" prefHeight="17.0" prefWidth="56.0" text="Amount" />
 										<TextField fx:id="amount" layoutX="211.0" layoutY="130.0"/>
-										<RadioButton layoutX="458.0" layoutY="122.0" mnemonicParsing="false" text="Checking" />
-										<RadioButton layoutX="455.0" layoutY="86.0" mnemonicParsing="false" text="Savings" />
-										<RadioButton layoutX="455.0" layoutY="48.0" mnemonicParsing="false" text="Money Market" />
+										<RadioButton layoutX="458.0" layoutY="122.0" mnemonicParsing="false" text="Checking" >
+											<toggleGroup>
+												<ToggleGroup fx:id="radioBu" />
+											</toggleGroup>
+										</RadioButton>
+										<RadioButton layoutX="455.0" layoutY="86.0" mnemonicParsing="false" text="Savings" toggleGroup="$radioBu"/>
+										<RadioButton layoutX="455.0" layoutY="48.0" mnemonicParsing="false" text="Money Market" toggleGroup="$radioBu"/>
 										<Button layoutX="268.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="161.0" text="Withdraw" />
 										<Button layoutX="68.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Deposit" />
 										<Button layoutX="543.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" text="Clear" />
