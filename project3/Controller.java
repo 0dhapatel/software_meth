@@ -22,4 +22,18 @@ public class Controller {
 		Stage stage = new Stage();
 		File targeFile = chooser.showSaveDialog(stage); //get the reference of the target file
 		//write code to write to the file.
-    }}
+    }
+	public void makeWithdraw() {
+        double amount = Double.parseDouble(withdrawField.getText());
+        account1.withdraw(amount);
+        balanceField.setText("$" + String.format("%.2f", account1.getBalance())); //String.valueOf(account1.getBalance()));
+        withdrawField.setText("");
+    }
+
+    public void makeDeposit() {
+        double amount = Double.parseDouble(depositField.getText());
+        account1.deposit(amount);
+        balanceField.setText("$" + String.format("%.2f", account1.getBalance())); //String.valueOf(account1.getBalance()));
+        depositField.setText("");
+    }
+}
