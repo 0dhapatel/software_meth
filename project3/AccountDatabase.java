@@ -65,23 +65,6 @@ public class AccountDatabase {
 	
 
 	/**
-	 * This is a helper method to find an account in the accounts array
-	 * 
-	 * @return -1 if the account is not in accounts array, else returns i if the
-	 *         array key is found
-	 * @param account is the account to be searched
-	 */
-
-	private int find(Account account) {
-		for (int i = 0; i < this.size; i++) {
-			if (account.toString().equals(this.accounts[i].toString())) {
-				return i;
-			}
-		}
-		return -1;
-	}
-
-	/**
 	 * This is a helper method to find the holder of an account in the accounts
 	 * array
 	 * 
@@ -90,7 +73,7 @@ public class AccountDatabase {
 	 * @param account is the account to be searched
 	 */
 
-	private int findHolder(Account account) {
+	private int find(Account account) {
 		for (int i = 0; i < this.size; i++) {
 			if (account.getProfile().equals(this.accounts[i].getProfile())
 					&& account.getAccountType() == this.accounts[i].getAccountType()) {
@@ -128,7 +111,7 @@ public class AccountDatabase {
 			return false;
 		}
 
-		// if capicity is smaller, use helper method grow to add more sapce
+		// if capacity is smaller, use helper method grow to add more space
 		if (this.size == this.accounts.length) {
 			grow();
 		}
@@ -147,7 +130,7 @@ public class AccountDatabase {
 	 *         account was removed
 	 */
 	public boolean remove(Account account) {
-		int key = findHolder(account);
+		int key = find(account);
 		// item not found
 		if (key == -1) {
 			return false;
@@ -170,7 +153,7 @@ public class AccountDatabase {
 	 *         account was removed
 	 */
 	public boolean deposit(Account account, double amount) {
-		int key = findHolder(account);
+		int key = find(account);
 		if (key == -1) {
 			return false;
 		}
@@ -188,7 +171,7 @@ public class AccountDatabase {
 	 * 
 	 */
 	public int withdrawal(Account account, double amount) {
-		int key = findHolder(account);
+		int key = find(account);
 		if (key == -1) {
 			return -1;
 		}
@@ -280,6 +263,13 @@ public class AccountDatabase {
 	 */
 	public String[] printAccounts() {
 		String [] printing = new String[this.size];
+		if (this.size==0) {
+			printing = new String[3];
+			printing[0] = "hi";
+			printing[1] = "hello";
+			printing[2] = "world";
+			return printing;
+		}
 		for (int i = 0; i < this.size; i++) {
 			printing[i] = (accounts[i].toString());
 		}
