@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioButton;
 import javafx.stage.*;
 import javafx.stage.FileChooser.ExtensionFilter;;
 
@@ -20,10 +21,29 @@ public class Controller {
 	
 	private AccountDatabase database = new AccountDatabase();
 	
+	public TextField firstName;
+	public TextField lastName;
+	public TextField month;
+	public TextField day;
+	public TextField year;
+	public TextField balance;
+	
+	public RadioButton checking;
+	public RadioButton savings;
+	public RadioButton moneyMarket;
+	
+	public Button openAccount;
+	public Button closeAccount;
+	public Button clearForm;
+	
+	public CheckBox direct;
+	public CheckBox loyal;
+	
 	public MenuItem printAccount;
 	public MenuItem printAccountByDate;
 	public MenuItem printAccountByName;
 	
+	public ToggleGroup radioB;
 	public TextArea output;
 	
 	/**
@@ -32,50 +52,43 @@ public class Controller {
 	 * @return new Checking object
 	 * @param cmdArr is an array that holds the user's input
 	 */
-	private Account checkingInfo(String[] cmdArr) {
-		char accountType = 'C';
+	private Account createAccount (String[] cmdArr) {
+		char accountType = cmdArr[0].charAt(0);
 		String fname = cmdArr[1];
 		String lname = cmdArr[2];
 		Profile holder = new Profile(fname, lname);
 		double balance = Double.parseDouble(cmdArr[3]);
-		boolean directDeposit = Boolean.parseBoolean(cmdArr[7]);
 		Date dateOpen = new Date(Integer.parseInt(cmdArr[4]), Integer.parseInt(cmdArr[5]), Integer.parseInt(cmdArr[6]));
-		Account checkingAccount = new Checking(directDeposit, holder, balance, dateOpen, accountType);
-		return checkingAccount;
-	}
-	
-	/**
-	 * This method splits the user's input into an array.
-	 * 
-	 * @return new Savings object
-	 * @param cmdArr is an array that holds the user's input
-	 */
-	private Account savingsInfo(String[] cmdArr) {
-		char accountType = 'S';
-		String fname = cmdArr[1];
-		String lname = cmdArr[2];
-		Profile holder = new Profile(fname, lname);
-		double balance = Double.parseDouble(cmdArr[3]);
-		boolean isLoyal = Boolean.parseBoolean(cmdArr[7]);
-		Date dateOpen = new Date(Integer.parseInt(cmdArr[4]), Integer.parseInt(cmdArr[5]), Integer.parseInt(cmdArr[6]));
-		return new Savings(isLoyal, holder, balance, dateOpen, accountType);
-	}
-	
-	/**
-	 * This method splits the user's input into an array.
-	 * 
-	 * @return new MoneyMarket object
-	 * @param cmdArr is an array that holds the user's input
-	 */
-	private Account moneyMarketInfo(String[] cmdArr) {
-		char accountType = 'M';
-		String fname = cmdArr[1];
-		String lname = cmdArr[2];
-		Profile holder = new Profile(fname, lname);
-		double balance = Double.parseDouble(cmdArr[3]);
+		if (cmdArr[0].equals("C")) {
+			boolean directDeposit = Boolean.parseBoolean(cmdArr[7]);
+			return new Checking(directDeposit, holder, balance, dateOpen, accountType);
+		}
+		else if (cmdArr[0].equals("S")) {
+			boolean isLoyal = Boolean.parseBoolean(cmdArr[7]);
+			return new Savings(isLoyal, holder, balance, dateOpen, accountType);
+		}
 		int withdrawals = Integer.parseInt(cmdArr[7]);
-		Date dateOpen = new Date(Integer.parseInt(cmdArr[4]), Integer.parseInt(cmdArr[5]), Integer.parseInt(cmdArr[6]));
 		return new MoneyMarket(withdrawals, holder, balance, dateOpen, accountType);
+	}
+	
+	/**
+	 * This method splits the user's input into an object.
+	 * 
+	 * @return new Checking, Savings, or Money Market object
+	 * @param cmdArr is an array that holds the user's input array
+	 */
+	private Account accountType(String[] cmdArr) {
+		char accountType = cmdArr[0].charAt(0);
+		String fname = cmdArr[1];
+		String lname = cmdArr[2];
+		Profile holder = new Profile(fname, lname);
+		if (cmdArr[0].equals("C")) {
+			return new Checking(false, holder, 0, null, accountType);
+		}
+		if (cmdArr[0].equals("S")) {
+			return new Savings(false, holder, 0, null, accountType);
+		}
+		return new MoneyMarket(0, holder, 0, null, accountType);
 	}
 	
 	/**
@@ -86,33 +99,78 @@ public class Controller {
 	 */
 	private void open(String[] cmdArray) {
 		try {
-			if (cmdArray[0].equals("C")) {
-				Account checkingAccount = checkingInfo(cmdArray);
-				if (database.add(checkingAccount)) {
-					output.appendText("Account opened and added to the database.\n");
-				} else {
-					output.appendText("Account is already in the database.\n");
-				}
-			} else if (cmdArray[0].equals("S")) {
-				Account savingsAccount = savingsInfo(cmdArray);
-				if (database.add(savingsAccount)) {
-					output.appendText("Account opened and added to the database.\n");
-				} else {
-					output.appendText("Account is already in the database.\n");
-				}
-
-			} else if (cmdArray[0].equals("M")) {
-				Account moneyMarketAccount = moneyMarketInfo(cmdArray);
-				if (database.add(moneyMarketAccount)) {
-					output.appendText("Account opened and added to the database.\n");
-				} else {
-					output.appendText("Account is already in the database.\n");
-				}
-
+			Account account = createAccount(cmdArray);
+			if (database.add(account)) {
+				output.appendText("Account opened and added to the database.\n");
+			} else {
+				output.appendText("Account is already in the database.\n");
 			}
 		} catch (Exception e) {
 			output.appendText("Input data type mismatch.\n");
 
+		}
+	}
+	
+	/**
+	 * if the client inputs a 'C', and it's followed by either a 'C', 'S', or 'M', a
+	 * checking, savings, or money market account are going to be closed
+	 * respectively.
+	 * 
+	 * @param cmdArray is an array that holds the user's input
+	 */
+	private void close(String[] cmdArray) {
+
+		try {
+			Account checkingAccount = accountType(cmdArray);
+			if (database.remove(checkingAccount)) {
+				output.appendText("Account closed and removed from the database.");
+			} else {
+				output.appendText("Account does not exist.");
+			}
+
+		} catch (Exception e) {
+			output.appendText("Input data type mismatch.");
+
+		}
+	}
+	
+	private String [] createArray () {
+		String[] cmd = new String [8];
+		cmd[1] = firstName.getText();
+		cmd[2] = lastName.getText();
+		cmd[3] = balance.getText();
+		cmd[4] = month.getText();
+		cmd[5] = day.getText();
+		cmd[6] = year.getText();
+		if (radioB.getSelectedToggle().equals(checking)) {
+			cmd[0] = "C";
+			if (direct.isSelected()) {
+				cmd[7] = "true";
+			} else {
+				cmd[7] = "false";
+			}
+		} else if (radioB.getSelectedToggle().equals(savings)) {
+			cmd[0] = "S";
+			if (loyal.isSelected()) {
+				cmd[7] = "true";
+			} else {
+				cmd[7] = "false";
+			}
+		} else if (radioB.getSelectedToggle().equals(moneyMarket)) {
+			cmd[0] = "M";
+			cmd[7] = "0";
+		}
+		return cmd;
+	}
+	
+	public void onButtonClicked (ActionEvent event) {
+		if (event.getSource().equals(openAccount)) {
+			String [] cmdArray = createArray();
+			open(cmdArray);
+			return;
+		} else if (event.getSource().equals(closeAccount)) {
+			String [] cmdArray = createArray();
+			close(cmdArray);
 		}
 	}
 	
@@ -145,6 +203,27 @@ public class Controller {
 		output.appendText("--end of printing--\n");
         return;
 	}
+	
+	 /**
+     * Takes an the event argument and disables the direct deposit and is loyal
+     * radio buttons based on which button is selected.
+     *
+     * @param event Controls event of RadioButton press and decides what to do after.
+     */
+    public void radioClicked (ActionEvent event) {
+        direct.setSelected(false);
+        loyal.setSelected(false);
+        if (event.getSource().equals(checking)) {
+            direct.setDisable(false);
+            loyal.setDisable(true);
+        } else if (event.getSource().equals(savings)) {
+            direct.setDisable(true);
+            loyal.setDisable(false);
+        } else if (event.getSource().equals(moneyMarket)){
+            direct.setDisable(true);
+            loyal.setDisable(true);
+        }
+    }
 	
 	/**
 	 * This method checks if the date is valid
