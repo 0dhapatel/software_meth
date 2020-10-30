@@ -49,7 +49,7 @@
 										<CheckBox fx:id="loyal" layoutX="521.0" layoutY="81.0" mnemonicParsing="false" text="Loyal Customer" disable="true"/>
 										<Button fx:id="openAccount" layoutX="68.0" layoutY="222.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="161.0" text="Open Account" onAction="#onButtonClicked" />
 										<Button fx:id="closeAccount" layoutX="252.0" layoutY="222.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Close Account" onAction="#onButtonClicked"  />
-										<Button fx:id="clearForm" layoutX="507.0" layoutY="222.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Clear" />
+										<Button fx:id="clearForm" layoutX="507.0" layoutY="222.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Clear" onAction="#onButtonClicked"/>
 									</children>
 								</AnchorPane>
 							</content>
@@ -59,22 +59,22 @@
 								<AnchorPane minHeight="0.0" minWidth="0.0"
 									prefHeight="180.0" prefWidth="200.0">
 									<children>
-										<Label layoutX="82.0" layoutY="56.0" prefHeight="17.0" prefWidth="66.0" text="First Name" />
-										<TextField fx:id="firstName2" editable="false" layoutX="211.0" layoutY="52.0"/>
-										<Label layoutX="82.0" layoutY="94.0" prefHeight="17.0" prefWidth="68.0" text="Last Name" />
+										<Label layoutX="82.0" layoutY="56.0" prefHeight="17.0" prefWidth="90.0" text="First Name" />
+										<TextField fx:id="firstName2" layoutX="211.0" layoutY="52.0"/>
+										<Label layoutX="82.0" layoutY="94.0" prefHeight="17.0" prefWidth="90.0" text="Last Name" />
 										<TextField fx:id="lastName2" layoutX="211.0" layoutY="90.0"/>
 										<Label layoutX="82.0" layoutY="134.0" prefHeight="17.0" prefWidth="56.0" text="Amount" />
 										<TextField fx:id="amount" layoutX="211.0" layoutY="130.0"/>
-										<RadioButton layoutX="458.0" layoutY="122.0" mnemonicParsing="false" text="Checking" >
+										<RadioButton fx:id="checking2" layoutX="455.0" layoutY="48.0" mnemonicParsing="false" text="Checking" >
 											<toggleGroup>
 												<ToggleGroup fx:id="radioBu" />
 											</toggleGroup>
 										</RadioButton>
-										<RadioButton layoutX="455.0" layoutY="86.0" mnemonicParsing="false" text="Savings" toggleGroup="$radioBu"/>
-										<RadioButton layoutX="455.0" layoutY="48.0" mnemonicParsing="false" text="Money Market" toggleGroup="$radioBu"/>
-										<Button layoutX="268.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="161.0" text="Withdraw" />
-										<Button layoutX="68.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Deposit" />
-										<Button layoutX="543.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" text="Clear" />
+										<RadioButton fx:id="savings2" layoutX="455.0" layoutY="86.0" mnemonicParsing="false" text="Savings" toggleGroup="$radioBu"/>
+										<RadioButton fx:id="moneyMarket2" layoutX="455.0" layoutY="122.0" mnemonicParsing="false" text="Money Market" toggleGroup="$radioBu"/>
+										<Button fx:id="withdrawB" layoutX="268.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="161.0" text="Withdraw" onAction="#onButtonClicked"/>
+										<Button fx:id="depositB" layoutX="68.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Deposit" onAction="#onButtonClicked"/>
+										<Button fx:id="clearForm2" layoutX="543.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" text="Clear" onAction="#onButtonClicked"/>
 									</children>
 								</AnchorPane>
 							</content>
