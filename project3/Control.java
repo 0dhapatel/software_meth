@@ -187,10 +187,7 @@ public class Controller {
 				return;
 			}
 			String [] cmdArray = createOpenArray();
-			if (cmdArray[0].length() > 1) {
-				output.appendText("Command '" + cmdArray[0] + "' not supported!\n");
-			} else {
-				Date open = new Date(Integer.parseInt(cmdArray[4]), Integer.parseInt(cmdArray[5]), Integer.parseInt(cmdArray[6]));
+			Date open = new Date(Integer.parseInt(cmdArray[4]), Integer.parseInt(cmdArray[5]), Integer.parseInt(cmdArray[6]));
 				if (!date(open)) {
 					output.appendText(open.toString() + " is not a valid date!\n");
 				} else if (cmdArray[0].equals("C") || cmdArray[0].equals("S")) {
@@ -202,7 +199,6 @@ public class Controller {
 				} else {
 					open(cmdArray);
 				}
-			}
 			return;
 		} else if (event.getSource().equals(closeAccount)) {
 			if(errorsClose()) {
@@ -305,9 +301,6 @@ public class Controller {
 				String account = read.nextLine();
 				String [] cmdArray = account.split(",|/");
 				try {
-					if (cmdArray[0].length() > 1) {
-						output.appendText("Command '" + cmdArray[0] + "' not supported!\n");
-					} else {
 						Date open = new Date(Integer.parseInt(cmdArray[4]), Integer.parseInt(cmdArray[5]), Integer.parseInt(cmdArray[6]));
 						if (!date(open)) {
 							output.appendText(open.toString() + " is not a valid date!\n");
@@ -320,7 +313,6 @@ public class Controller {
 						} else {
 							open(cmdArray);
 						}
-					}
 				} catch (Exception e) {
 					output.appendText("Input data type mismatch.\n");
 				}
