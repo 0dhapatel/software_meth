@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -184,7 +183,7 @@ public class Controller {
 	
 	public void onButtonClicked (ActionEvent event) {
 		if (event.getSource().equals(openAccount)) {
-			if (errors()) {
+			if (errorsOpen()) {
 				return;
 			}
 			String [] cmdArray = createOpenArray();
@@ -206,6 +205,9 @@ public class Controller {
 			}
 			return;
 		} else if (event.getSource().equals(closeAccount)) {
+			if(errorsClose()) {
+				return;
+			}
 			String [] cmdArray = createArray();
 			close(cmdArray);
 		}
@@ -323,6 +325,7 @@ public class Controller {
 					output.appendText("Input data type mismatch.\n");
 				}
 			}
+			output.appendText("Import Complete\n");
 			read.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -349,10 +352,10 @@ public class Controller {
 				String date = database.getAccounts(i).getDate().toString()+",";
 				String extra = database.getAccounts(i).getExtra();
 				String mergedAccount = (accountType + name + balance + date + extra +"\n");
-				output.appendText(mergedAccount);
 				writer.write(mergedAccount);
 			}
 			writer.close();
+			output.appendText("Export Comlete\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			output.appendText("File cannot be written.");
@@ -364,7 +367,7 @@ public class Controller {
      *
      * @return Returns true or false as the return type for the function.
      */
-    public boolean errors() {
+    public boolean errorsOpen() {
         if (notAlpha(firstName.getText())) {
             output.appendText("Error: First name must be alphabetic and not null!\n");
             return true;
@@ -387,6 +390,27 @@ public class Controller {
         }
         if (notNumeric(balance.getText())) {
             output.appendText("Error: Number of balance must be numeric and not null!\n");
+            return true;
+        }
+        if (radioB.getSelectedToggle() == null) {
+            output.appendText("Error: You must select an option: Checking, Savings, or Money Market!\n");
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Checks for simple errors in the GUI for numeric, alphabetic, or button/radio selection.
+     *
+     * @return Returns true or false as the return type for the function.
+     */
+    public boolean errorsClose() {
+        if (notAlpha(firstName.getText())) {
+            output.appendText("Error: First name must be alphabetic and not null!\n");
+            return true;
+        }
+        if (notAlpha(lastName.getText())) {
+            output.appendText("Error: Last Name must be alphabetic and not null!\n");
             return true;
         }
         if (radioB.getSelectedToggle() == null) {
