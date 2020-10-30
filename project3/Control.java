@@ -1,6 +1,9 @@
 package application;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 import javafx.fxml.FXML;
@@ -177,7 +180,7 @@ public class Controller {
 		//write code to read from the file.
 		try {
 			Scanner read = new Scanner(sourceFile);
-			//while(read.hasNextLine()) {
+			while(read.hasNextLine()) {
 				String account = read.nextLine();
 				String [] cmdArray = account.split(",|/");
 				try {
@@ -200,8 +203,7 @@ public class Controller {
 				} catch (Exception e) {
 					output.appendText("Input data type mismatch.\n");
 				}
-				//open(cmdArray);
-			//}
+			}
 			read.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -219,15 +221,23 @@ public class Controller {
 		Stage stage = new Stage();
 		File targetFile = chooser.showSaveDialog(stage); //get the reference of the target file
 		//write code to write to the file.
-		int i = 0;
-		String accountType = database.getAccounts(i).getAccountType()+",";
-		String name = database.getAccounts(i).getProfile().replace(" ", ",");
-		String balance = ","+database.getAccounts(i).getBalance()+",";
-		String date = database.getAccounts(i).getDate().toString()+",";
-		String extra = "";
-		extra = database.getAccounts(i).getExtra();
-		output.appendText(accountType + name + balance + date + extra +"\n");
-		
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter(targetFile));
+			for(int i = 0; i<database.getSize(); i++) {
+				String accountType = database.getAccounts(i).getAccountType()+",";
+				String name = database.getAccounts(i).getProfile().replace(" ", ",");
+				String balance = ","+database.getAccounts(i).getBalance()+",";
+				String date = database.getAccounts(i).getDate().toString()+",";
+				String extra = database.getAccounts(i).getExtra();
+				String mergedAccount = (accountType + name + balance + date + extra +"\n");
+				output.appendText(mergedAccount);
+				writer.write(mergedAccount);
+			}
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			output.appendText("File cannot be written.");
+		}
     }
 	
 }
