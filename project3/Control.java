@@ -28,6 +28,10 @@ public class Controller {
 	public TextField year;
 	public TextField balance;
 	
+	public TextField firstName2;
+	public TextField lastName2;
+	public TextField amount;
+	
 	public RadioButton checking;
 	public RadioButton savings;
 	public RadioButton moneyMarket;
@@ -135,32 +139,32 @@ public class Controller {
 	}
 	
 	private String [] createOpenArray () {
-		String[] cmd = new String [8];
-		cmd[1] = firstName.getText();
-		cmd[2] = lastName.getText();
-		cmd[3] = balance.getText();
-		cmd[4] = month.getText();
-		cmd[5] = day.getText();
-		cmd[6] = year.getText();
-		if (radioB.getSelectedToggle().equals(checking)) {
-			cmd[0] = "C";
-			if (direct.isSelected()) {
-				cmd[7] = "true";
-			} else {
-				cmd[7] = "false";
+			String[] cmd = new String [8];
+			cmd[1] = firstName.getText();
+			cmd[2] = lastName.getText();
+			cmd[3] = balance.getText();
+			cmd[4] = month.getText();
+			cmd[5] = day.getText();
+			cmd[6] = year.getText();
+			if (radioB.getSelectedToggle().equals(checking)) {
+				cmd[0] = "C";
+				if (direct.isSelected()) {
+					cmd[7] = "true";
+				} else {
+					cmd[7] = "false";
+				}
+			} else if (radioB.getSelectedToggle().equals(savings)) {
+				cmd[0] = "S";
+				if (loyal.isSelected()) {
+					cmd[7] = "true";
+				} else {
+					cmd[7] = "false";
+				}
+			} else if (radioB.getSelectedToggle().equals(moneyMarket)) {
+				cmd[0] = "M";
+				cmd[7] = "0";
 			}
-		} else if (radioB.getSelectedToggle().equals(savings)) {
-			cmd[0] = "S";
-			if (loyal.isSelected()) {
-				cmd[7] = "true";
-			} else {
-				cmd[7] = "false";
-			}
-		} else if (radioB.getSelectedToggle().equals(moneyMarket)) {
-			cmd[0] = "M";
-			cmd[7] = "0";
-		}
-		return cmd;
+			return cmd;
 	}
 	
 	private String [] createArray () {
@@ -179,12 +183,33 @@ public class Controller {
 	
 	public void onButtonClicked (ActionEvent event) {
 		if (event.getSource().equals(openAccount)) {
+			if (errors()) {
+				return;
+			}
 			String [] cmdArray = createOpenArray();
-			open(cmdArray);
+			if (cmdArray[0].length() > 1) {
+				output.appendText("Command '" + cmdArray[0] + "' not supported!\n");
+			} else {
+				Date open = new Date(Integer.parseInt(cmdArray[4]), Integer.parseInt(cmdArray[5]), Integer.parseInt(cmdArray[6]));
+				if (!date(open)) {
+					output.appendText(open.toString() + " is not a valid date!\n");
+				} else if (cmdArray[0].equals("C") || cmdArray[0].equals("S")) {
+					if (!(bool(cmdArray[7]))) {
+						output.appendText("Input data type mismatch.\n");
+					} else {
+						open(cmdArray);
+					}
+				} else {
+					open(cmdArray);
+				}
+			}
 			return;
 		} else if (event.getSource().equals(closeAccount)) {
 			String [] cmdArray = createArray();
 			close(cmdArray);
+		}
+		else if (event.getSource().equals(clearForm)) {
+			
 		}
 	}
 	
@@ -332,5 +357,64 @@ public class Controller {
 			output.appendText("File cannot be written.");
 		}
     }
+    
+    /**
+     * Checks for simple errors in the GUI for numeric, alphabetic, or button/radio selection.
+     *
+     * @return Returns true or false as the return type for the function.
+     */
+    public boolean errors() {
+        if (notAlpha(firstName.getText())) {
+            output.appendText("Error: First name must be alphabetic and not null!\n");
+            return true;
+        }
+        if (notAlpha(lastName.getText())) {
+            output.appendText("Error: Last Name must be alphabetic and not null!\n");
+            return true;
+        }
+        if (notNumeric(day.getText())) {
+            output.appendText("Error: Day must be numeric and not null!\n");
+            return true;
+        }
+        if (notNumeric(year.getText())) {
+            output.appendText("Error: Year must be numeric and not null!\n");
+            return true;
+        }
+        if (notNumeric(month.getText())) {
+            output.appendText("Error: Month must be numeric and not null!\n");
+            return true;
+        }
+        if (notNumeric(balance.getText())) {
+            output.appendText("Error: Number of balance must be numeric and not null!\n");
+            return true;
+        }
+        if (radioB.getSelectedToggle() == null) {
+            output.appendText("Error: You must select an option: Checking, Savings, or Money Market!\n");
+            return true;
+        }
+        
+        return false;
+    }
+
+    /**
+     * Checks if the string is alphabetic or not and returns true or false based on that.
+     *
+     * @param data Is a string variable for account.
+     * @return Is the boolean variable for if string is alphabetic or not.
+     */
+    public boolean notAlpha(String data) {
+        return !(!data.equals("") && data.matches("^[a-zA-Z]*$"));
+    }
+
+    /**
+     * Checks if the string is numeric or not and returns true or false based on that.
+     *
+     * @param data Is a string variable for account.
+     * @return Is the boolean variable for if string is numeric or not.
+     */
+    public boolean notNumeric(String data) {
+        return !(!data.equals("") && data.matches("^[0-9]*$"));
+    }
+
 	
 }
