@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -35,9 +36,16 @@ public class Controller {
 	public RadioButton savings;
 	public RadioButton moneyMarket;
 	
+	public RadioButton checking2;
+	public RadioButton savings2;
+	public RadioButton moneyMarket2;
+	
 	public Button openAccount;
 	public Button closeAccount;
+	public Button withdrawB;
+	public Button depositB;
 	public Button clearForm;
+	public Button clearForm2;
 	
 	public CheckBox direct;
 	public CheckBox loyal;
@@ -49,6 +57,11 @@ public class Controller {
 	public ToggleGroup radioB;
 	public ToggleGroup radioBu;
 	public TextArea output;
+	
+	/**
+	 * This object is used to format double variables to two points of precision.
+	 */
+	private static DecimalFormat df2 = new DecimalFormat("0.00");
 	
 	/**
 	 * This method splits the user's input into an array.
@@ -123,7 +136,6 @@ public class Controller {
 	 * @param cmdArray is an array that holds the user's input
 	 */
 	private void close(String[] cmdArray) {
-
 		try {
 			Account checkingAccount = accountType(cmdArray);
 			if (database.remove(checkingAccount)) {
@@ -138,7 +150,52 @@ public class Controller {
 		}
 	}
 	
-	private String [] createOpenArray () {
+	/**
+	 * if the client inputs a 'W', and it's followed by either a 'C', 'S', or 'M',
+	 * an amount is going to be withdraw from checking, savings, or money market
+	 * account respectively.
+	 * 
+	 * @param cmdArray is an array that holds the user's input
+	 */
+	private void withdraw(String[] cmdArray) {
+		try {
+				Account checkingAccount = accountType(cmdArray);
+				double amount = Double.parseDouble(cmdArray[3]);
+				if (database.withdrawal(checkingAccount, amount) == 0) {
+					output.appendText(df2.format(amount) + "  withdrawn from account.\n");
+				} else if (database.withdrawal(checkingAccount, amount) == 1) {
+					output.appendText("Insufficient funds.\n");
+				} else {
+					output.appendText("Account does not exist.\n");
+				}
+		} catch (Exception e) {
+			output.appendText("Input data type mismatch.\n");
+		}
+	}
+	
+	/**
+	 * if the client inputs a 'D', and it's followed by either a 'C', 'S', or 'M',
+	 * an amount is going to be deposited into checking, savings, or money market
+	 * account respectively.
+	 * 
+	 * @param cmdArray is an array that holds the user's input
+	 */
+	private void deposit(String[] cmdArray) {
+		try {
+				Account checkingAccount = accountType(cmdArray);
+				double amount = Double.parseDouble(cmdArray[3]);
+				if (database.deposit(checkingAccount, amount)) {
+					output.appendText(df2.format(amount) + " deposited to account.\n");
+				} else {
+					output.appendText("Account does not exist.\n");
+				}
+		} catch (Exception e) {
+			output.appendText("Input data type mismatch.\n");
+
+		}
+	}
+	
+	private String [] createOpenArray() {
 			String[] cmd = new String [8];
 			cmd[1] = firstName.getText();
 			cmd[2] = lastName.getText();
@@ -167,7 +224,7 @@ public class Controller {
 			return cmd;
 	}
 	
-	private String [] createArray () {
+	private String [] createArray() {
 		String[] cmd = new String [3];
 		cmd[1] = firstName.getText();
 		cmd[2] = lastName.getText();
@@ -176,6 +233,21 @@ public class Controller {
 		} else if (radioB.getSelectedToggle().equals(savings)) {
 			cmd[0] = "S";
 		} else if (radioB.getSelectedToggle().equals(moneyMarket)) {
+			cmd[0] = "M";
+		}
+		return cmd;
+	}
+	
+	private String [] createArr() {
+		String[] cmd = new String [4];
+		cmd[1] = firstName2.getText();
+		cmd[2] = lastName2.getText();
+		cmd[3] = amount.getText();
+		if (radioBu.getSelectedToggle().equals(checking2)) {
+			cmd[0] = "C";
+		} else if (radioB.getSelectedToggle().equals(savings2)) {
+			cmd[0] = "S";
+		} else if (radioB.getSelectedToggle().equals(moneyMarket2)) {
 			cmd[0] = "M";
 		}
 		return cmd;
@@ -206,9 +278,43 @@ public class Controller {
 			}
 			String [] cmdArray = createArray();
 			close(cmdArray);
-		}
-		else if (event.getSource().equals(clearForm)) {
+		} else if (event.getSource().equals(withdrawB)) {
+			if(errors()) {
+				return;
+			}
+			String [] cmdArray = createArr();
+			withdraw(cmdArray);
+		} else if (event.getSource().equals(depositB)) {
+			if(errors()) {
+				return;
+			}
+			String [] cmdArray = createArr();
+			deposit(cmdArray);
+		} else if (event.getSource().equals(clearForm)||event.getSource().equals(clearForm2)) {
+			firstName.setText("");
+			lastName.setText("");
+			month.setText("");
+			day.setText("");
+			year.setText("");
+			balance.setText("");
 			
+			firstName2.setText("");
+			lastName2.setText("");
+			amount.setText("");
+			
+			checking.setSelected(false);
+			savings.setSelected(false);
+			moneyMarket.setSelected(false);
+			checking2.setSelected(false);
+			savings2.setSelected(false);
+			moneyMarket2.setSelected(false);
+
+			direct.setSelected(false);
+			loyal.setSelected(false);
+			direct.setDisable(true);
+            loyal.setDisable(true);
+            
+			output.setText("");
 		}
 	}
 	
@@ -274,7 +380,6 @@ public class Controller {
 		} else {
 			return false;
 		}
-
 	}
 	
 	/**
@@ -320,7 +425,6 @@ public class Controller {
 			output.appendText("Import Complete\n");
 			read.close();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			output.appendText("Error Opening File\n");
 		}
 		
@@ -349,7 +453,6 @@ public class Controller {
 			writer.close();
 			output.appendText("Export Comlete\n");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			output.appendText("File cannot be written.");
 		}
     }
@@ -412,6 +515,31 @@ public class Controller {
         return false;
     }
 
+    /**
+     * Checks for simple errors in the GUI for numeric, alphabetic, or button/radio selection.
+     *
+     * @return Returns true or false as the return type for the function.
+     */
+    public boolean errors() {
+        if (notAlpha(firstName2.getText())) {
+            output.appendText("Error: First name must be alphabetic and not null!\n");
+            return true;
+        }
+        if (notAlpha(lastName2.getText())) {
+            output.appendText("Error: Last Name must be alphabetic and not null!\n");
+            return true;
+        }
+        if (radioBu.getSelectedToggle() == null) {
+            output.appendText("Error: You must select an option: Checking, Savings, or Money Market!\n");
+            return true;
+        }
+        if (notNumeric(amount.getText())) {
+            output.appendText("Error: Number of balance must be numeric and not null!\n");
+            return true;
+        }
+        return false;
+    }
+    
     /**
      * Checks if the string is alphabetic or not and returns true or false based on that.
      *
