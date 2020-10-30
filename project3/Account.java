@@ -85,7 +85,7 @@ public abstract class Account {
 	 */
 
 	public String getProfile() {
-		String mergeString = this.holder.get_fname() + " " + this.holder.get_lname();
+		String mergeString = this.holder.get_fname().toLowerCase() + " " + this.holder.get_lname().toLowerCase();
 		return mergeString;
 	}
 
