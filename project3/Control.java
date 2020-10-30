@@ -48,6 +48,7 @@ public class Controller {
 	public MenuItem printAccountByName;
 	
 	public ToggleGroup radioB;
+	public ToggleGroup radioBu;
 	public TextArea output;
 	
 	/**
@@ -392,7 +393,6 @@ public class Controller {
             output.appendText("Error: You must select an option: Checking, Savings, or Money Market!\n");
             return true;
         }
-        
         return false;
     }
 
