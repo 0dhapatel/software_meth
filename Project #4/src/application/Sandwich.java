@@ -2,15 +2,54 @@
  * 
  */
 package application;
-import java.text.DecimalFormat;
+
+import java.util.ArrayList;
 /**
- * @author Jei Mota
+ * @author Jei Mota and Dhaval Patel
  *
  */
-public class Sandwich  implements Customizable{
+public abstract class Sandwich  implements Customizable{
 	static final int MAX_EXTRAS = 6;
 	static final double PER_EXTRA = 1.99;
 	protected ArrayList<Extra> extras;
+	
+	public abstract double price();
+	public abstract String basicIngredient();
+	
+	public Sandwich() {
+		extras = new ArrayList<Extra>();
+	}
+	
+	@Override
+	public String toString() {
+		String extra = "";
+	    for (Extra s : extras) {
+	        extra += "," + s.getIngredient();
+	    }
+		return basicIngredient() + extra;
+	}
+	
+	@Override
+	public boolean add(Object obj) {
+		if(extras.size() >= MAX_EXTRAS) {
+			return false;
+		}
+		if (obj instanceof Extra) {
+			extras.add((Extra)obj);
+			return true;
+		}
+		return false;
+	}
 
-
+	@Override
+	public boolean remove(Object obj) {
+		if(extras.size() == 0) {
+			return false;
+		}
+		if (obj instanceof Extra) {
+			extras.remove((Extra)obj);
+			return true;
+		}
+		return false;
+	}
 }
