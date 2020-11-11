@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package application;
+
+/**
+ * @author Jei Mota
+ *
+ */
+public class Order {
+	public static int lineNumber; //reset for each new order;
+	private ArrayList<OrderLine> orderlines;
+
+}
