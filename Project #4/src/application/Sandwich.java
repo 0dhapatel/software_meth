@@ -15,6 +15,7 @@ public abstract class Sandwich  implements Customizable{
 	
 	public abstract double price();
 	public abstract String basicIngredient();
+	public abstract String type();
 	
 	public Sandwich() {
 		extras = new ArrayList<Extra>();
@@ -23,8 +24,8 @@ public abstract class Sandwich  implements Customizable{
 	@Override
 	public String toString() {
 		String extra = "";
-	    for (Extra s : extras) {
-	        extra += "," + s.getIngredient();
+	    for (Extra ingred : extras) {
+	        extra += "," + ingred;
 	    }
 		return basicIngredient() + extra;
 	}
