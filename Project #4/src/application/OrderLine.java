@@ -3,6 +3,8 @@
  */
 package application;
 
+import java.text.DecimalFormat;
+
 /**
  * @author Jei Mota and Dhaval Patel
  *
@@ -12,8 +14,10 @@ public class OrderLine {
 	private Sandwich sandwich;
 	private double price;
 	
-	public OrderLine(Sandwich sandwich){
-		this.lineNumber = Order.lineNumber;
+	private static DecimalFormat df2 = new DecimalFormat("0.00");
+	
+	public OrderLine(Sandwich sandwich, int lineNumber){
+		this.lineNumber = lineNumber;
 		this.sandwich = sandwich;
 		this.price = sandwich.price();
 	}
@@ -32,22 +36,21 @@ public class OrderLine {
 	
 	public void setPrice (double price) {
 		 this.price = price;
-		 this.price = sandwich.price();
 	}
 	
 	public void setSandwich (Sandwich sandwich) {
 		this.sandwich = sandwich;
 	}
 	
-	public String getSandwich() {
-		return this.sandwich.toString();
+	public Sandwich getSandwich() {
+		return this.sandwich;
 	}
 	
 	public String getBasicIngredients() {
 		return sandwich.basicIngredient();
 	}
 
-	public String allIngredients() {
-		return sandwich.toString();
+	public String allOrder() {
+		return this.lineNumber + " " + this.sandwich.toString() + "; $" +df2.format(this.price);
 	}
 }
