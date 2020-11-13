@@ -10,7 +10,7 @@ package application;
 public class Fish extends Sandwich {
 
 	private double prices = 12.99;
-	private String basicIngredients = "Grilled Snapper,Cilantro,Lime";
+	private String basicIngredients = "Grilled Snapper, Cilantro, Lime";
 
 	@Override
 	public double price() {
@@ -23,6 +23,11 @@ public class Fish extends Sandwich {
 	}
 	
 	@Override
+	public String toString() {
+		return type() + "; " +super.toString();
+	}
+	
+	@Override
 	public boolean add(Object obj) {
 		super.add(obj);
 		return false;
@@ -32,6 +37,11 @@ public class Fish extends Sandwich {
 	public boolean remove(Object obj) {
 		super.remove(obj);
 		return false;
+	}
+
+	@Override
+	public String type() {
+		return "Fish";
 	}
 
 }
