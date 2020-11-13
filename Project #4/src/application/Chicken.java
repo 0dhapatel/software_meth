@@ -10,7 +10,8 @@ package application;
 public class Chicken extends Sandwich {
 
 	private double prices = 8.99;
-	private String basicIngredients = "Fried Chicken,Spicy Sauce,Pickles";
+	private String basicIngredients = "Fried Chicken, Spicy Sauce, Pickles";
+	
 
 	@Override
 	public double price() {
@@ -23,6 +24,11 @@ public class Chicken extends Sandwich {
 	}
 	
 	@Override
+	public String toString() {
+		return type() + "; " +super.toString();
+	}
+	
+	@Override
 	public boolean add(Object obj) {
 		super.add(obj);
 		return false;
@@ -32,6 +38,11 @@ public class Chicken extends Sandwich {
 	public boolean remove(Object obj) {
 		super.remove(obj);
 		return false;
+	}
+
+	@Override
+	public String type() {
+		return "Chicken";
 	}
 
 }
