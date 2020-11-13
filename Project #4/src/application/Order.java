@@ -4,7 +4,6 @@
 package application;
 
 import java.util.ArrayList;
-import java.text.DecimalFormat;
 
 /**
  * @author Jei Mota and Dhaval Patel
@@ -14,21 +13,23 @@ public class Order implements Customizable{
 	public static int lineNumber; //reset for each new order;
 	private ArrayList<OrderLine> orderlines;
 	
-	/**
-	 * Formats a double parameter to two decimal places of precision
-	 */
-	private static DecimalFormat df2 = new DecimalFormat("0.00");
-	
 	public Order(){
-		lineNumber = 1 ;
+		lineNumber = 0;
 		this.orderlines = new ArrayList<OrderLine>();
+	}
+	
+	public int lineNum() {
+		return orderlines.size();
+	}
+	
+	public OrderLine startOrder() {
+		return orderlines.get(lineNumber-1);
 	}
 	
 	@Override
 	public boolean add(Object obj) {
 		if (obj instanceof OrderLine) {
 			orderlines.add((OrderLine)obj);
-			lineNumber = lineNumber + 1;
 			return true;
 		}
 		return false;
@@ -62,7 +63,19 @@ public class Order implements Customizable{
 		lineNumber = 1;
 	}
 	
-	public String printOrder() {
-		return null;
+	public ArrayList<String> printOrder() {
+		ArrayList<String> print = new ArrayList<String>();
+		for(int i = 0; i<orderlines.size(); i++) {
+			print.add(orderlines.get(i).allOrder());
+		}
+		return print;
+	}
+	
+	public double totalAmount() {
+		double total = 0;
+		for(int i = 0; i<orderlines.size(); i++) {
+			total = total + orderlines.get(i).getPrice();
+		}
+		return total;
 	}
 }
