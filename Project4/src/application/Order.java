@@ -22,14 +22,16 @@ public class Order implements Customizable{
 		return orderlines.size();
 	}
 	
-	public OrderLine startOrder() {
-		return orderlines.get(lineNumber-1);
+	public OrderLine sameOrder(int index) {
+		return orderlines.get(index);
 	}
 	
 	@Override
 	public boolean add(Object obj) {
 		if (obj instanceof OrderLine) {
+			lineNumber = lineNumber + 1;
 			orderlines.add((OrderLine)obj);
+			orderlines.get(lineNumber-1).setLineNum(lineNumber);
 			return true;
 		}
 		return false;
@@ -37,10 +39,10 @@ public class Order implements Customizable{
 	
 	private void reorderLine(int index) {
 		for(int i = index; i<orderlines.size(); i++) {
-			OrderLine temp = orderlines.get(index);
+			OrderLine temp = orderlines.get(i);
 			int lineNum = temp.getLineNum();
 			temp.setLineNum(lineNum - 1);
-			orderlines.set(index, temp);
+			orderlines.set(i, temp);
 		}
 	}
 
@@ -53,6 +55,7 @@ public class Order implements Customizable{
 			int index = orderlines.indexOf((OrderLine)obj);
 			orderlines.remove((OrderLine)obj);
 			reorderLine(index);
+			lineNumber = lineNumber -1;
 			return true;
 		}
 		return false;
@@ -60,7 +63,7 @@ public class Order implements Customizable{
 	
 	public void clearOrder() {
 		orderlines.clear();
-		lineNumber = 1;
+		lineNumber = 0;
 	}
 	
 	public ArrayList<String> printOrder() {
