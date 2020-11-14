@@ -16,8 +16,7 @@ public class OrderLine {
 	
 	private static DecimalFormat df2 = new DecimalFormat("0.00");
 	
-	public OrderLine(Sandwich sandwich, int lineNumber){
-		this.lineNumber = lineNumber;
+	public OrderLine(Sandwich sandwich){
 		this.sandwich = sandwich;
 		this.price = sandwich.price();
 	}
