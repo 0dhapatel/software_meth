@@ -50,6 +50,6 @@ public class OrderLine {
 	}
 
 	public String allOrder() {
-		return this.lineNumber + " " + this.sandwich.toString() + "; $" +df2.format(this.price);
+		return this.lineNumber + " " + this.sandwich.toString() + "$" + df2.format(sandwich.price());
 	}
 }
