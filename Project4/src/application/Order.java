@@ -55,7 +55,7 @@ public class Order implements Customizable{
 			int index = orderlines.indexOf((OrderLine)obj);
 			orderlines.remove((OrderLine)obj);
 			reorderLine(index);
-			lineNumber = lineNumber -1;
+			lineNumber = lineNumber - 1;
 			return true;
 		}
 		return false;
