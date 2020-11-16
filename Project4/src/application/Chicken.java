@@ -12,6 +12,9 @@ public class Chicken extends Sandwich {
 	private double prices = 8.99;
 	private String basicIngredients = "Fried Chicken, Spicy Sauce, Pickles";
 	
+	public Chicken(){
+		super();
+	}
 
 	@Override
 	public double price() {
