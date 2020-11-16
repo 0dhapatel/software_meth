@@ -12,6 +12,10 @@ public class Beef extends Sandwich{
 	private double prices = 10.99;
 	private String basicIngredients = "Roast Beef, Provolone Cheese, Mustard";
 
+	public Beef() {
+		super();
+	}
+	
 	@Override
 	public double price() {
 		return (prices + (extras.size()*PER_EXTRA));
