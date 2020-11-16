@@ -12,6 +12,9 @@ public class Fish extends Sandwich {
 	private double prices = 12.99;
 	private String basicIngredients = "Grilled Snapper, Cilantro, Lime";
 
+	public Fish(){
+		super();
+	}
 	@Override
 	public double price() {
 		return (prices + (extras.size()*PER_EXTRA));
