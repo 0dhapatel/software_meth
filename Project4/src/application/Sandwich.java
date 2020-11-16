@@ -25,9 +25,12 @@ public abstract class Sandwich  implements Customizable{
 	public String toString() {
 		String extra = "";
 	    for (Extra ingred : extras) {
-	        extra += "," + ingred;
+	        extra += ", " + ingred.getIngredient();
 	    }
-		return basicIngredient() + extra;
+	    if(extra.length()>3) {
+	    	extra = extra.substring(2) + "; ";
+	    }
+		return basicIngredient() + "; " + extra;
 	}
 	
 	@Override
