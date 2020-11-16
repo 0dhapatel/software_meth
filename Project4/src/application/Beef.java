@@ -4,11 +4,16 @@
 package application;
 
 /**
+ * This class extends the class Sandwich and Overrides the methods price,
+ * basicIngredient, toString, add, remove and Type.
+ * 
  * @author Jei Mota and Dhaval Patel
  *
  */
 public class Beef extends Sandwich{
-	
+	/**
+	 * Sandwich price
+	 */
 	private double prices = 10.99;
 	private String basicIngredients = "Roast Beef, Provolone Cheese, Mustard";
 
