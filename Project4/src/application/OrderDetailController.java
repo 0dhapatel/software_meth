@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -33,9 +34,12 @@ public class OrderDetailController {
 
     @FXML
     private Button back;
-
+    
     @FXML
     private TextField price;
+    
+    @FXML
+    private TextArea output2;
 
     public void initialize() {
     	orderedSandwich = FXCollections.observableArrayList(order.printOrder());
@@ -46,6 +50,7 @@ public class OrderDetailController {
     @FXML
     void addSameOrder(ActionEvent event) {
     	if (orderList.getSelectionModel().getSelectedItem() == null) {
+    		output2.appendText("Please Select a Sandwich to Add to Order\n");
     		return;
     	}
     	String orderedSandwich = orderList.getSelectionModel().getSelectedItem();
@@ -54,19 +59,20 @@ public class OrderDetailController {
     	OrderLine copy = new OrderLine(sandwich.getSandwich());
     	order.add(copy);
     	initialize();
+    	output2.appendText("Sandwich Added to Order\n");
     }
 
     @FXML
     void clearOrder(ActionEvent event) {
-    	//orderList.getItems().clear();
-    	//price.setText("$"+df2.format(0));
     	order.clearOrder();
     	initialize();
+    	output2.appendText("Order Cleared\n");
     }
 
     @FXML
     void removeOrder(ActionEvent event) {
     	if (orderList.getSelectionModel().getSelectedItem() == null) {
+    		output2.appendText("Please Select a Sandwich to Remove to Order\n");
     		return;
     	}
     	String orderedSandwich = orderList.getSelectionModel().getSelectedItem();
@@ -74,6 +80,7 @@ public class OrderDetailController {
     	OrderLine sandwich = order.sameOrder(index-1);
     	order.remove(sandwich);
     	initialize();
+    	output2.appendText("Sandwich Removed to Order\n");
     }
 
     @FXML
@@ -97,9 +104,9 @@ public class OrderDetailController {
 				writer.write(print.get(i)+"\n"); 
 			}
 			writer.close();
-			//output.appendText("Export Complete\n");
+			output2.appendText("Export Complete\n");
 		} catch (IOException e) {
-			//output.appendText("File cannot be written.\n");
+			output2.appendText("File cannot be written.\n");
 		}
     }
 
