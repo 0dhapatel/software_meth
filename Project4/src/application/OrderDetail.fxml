@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OrderDetailController">
@@ -19,6 +20,7 @@
             <TextField fx:id="price" editable="false" layoutX="448.0" layoutY="339.0" prefHeight="27.0" prefWidth="123.0" />
             <Label layoutX="374.0" layoutY="344.0" text="Order Total" />
             <Button layoutX="448.0" layoutY="373.0" mnemonicParsing="false" onAction="#saveOrder"  text="Save Order to File" />
+            <TextArea fx:id="output2" editable="false" layoutY="475.0" prefHeight="100.0" prefWidth="600.0" />
          </children>
       </AnchorPane>
    </bottom>
