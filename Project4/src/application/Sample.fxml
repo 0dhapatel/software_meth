@@ -17,11 +17,11 @@
       <Text layoutX="66.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandwich type" />
       <Text layoutX="214.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set ingredients" wrappingWidth="121.59999999999991" />
       <ImageView fx:id="imageChooser" fitHeight="106.0" fitWidth="166.0" layoutX="376.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true"/>
-      <ListView layoutX="35.0" layoutY="186.0" prefHeight="294.0" prefWidth="139.0" />
-      <Button layoutX="215.0" layoutY="265.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="59.0" text="Add" />
-      <Button layoutX="215.0" layoutY="333.0" mnemonicParsing="false"  text="Remove" />
-      <Button layoutX="215.0" layoutY="401.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="59.0" text="Clear" onAction="#clearList"/>
-      <ListView  layoutX="308.0" layoutY="186.0" prefHeight="294.0" prefWidth="139.0" />
+      <ListView fx:id="extra" layoutX="35.0" layoutY="186.0" prefHeight="294.0" prefWidth="139.0" />
+      <Button layoutX="215.0" layoutY="265.0" mnemonicParsing="false" text="Add" onAction="#addExtra"/>
+      <Button layoutX="215.0" layoutY="333.0" mnemonicParsing="false" text="Remove" onAction="#removeExtra"/>
+      <Button layoutX="215.0" layoutY="401.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="59.0" text="Clear" onAction="#clearList"/>
+      <ListView fx:id="extraToAdd" layoutX="308.0" layoutY="186.0" prefHeight="294.0" prefWidth="139.0" />
       <TextField fx:id="prices" editable="false" layoutX="458.0" layoutY="265.0" prefHeight="26.0" prefWidth="121.0" />
       <Button fx:id="addButton" layoutX="476.0" layoutY="333.0" mnemonicParsing="false" text="Add to Order" onAction="#addOrder"/>
       <Button fx:id="orderShow" layoutX="476.0" layoutY="401.0" mnemonicParsing="false" text="Show Order" onAction="#showOrder" />
