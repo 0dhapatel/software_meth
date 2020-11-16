@@ -32,6 +32,7 @@ public class SampleController {
 	private static DecimalFormat df2 = new DecimalFormat("0.00");
 
 	final int MAX_INGREDIENTS = 6;
+	final double PER_EXTRA = 1.99;
 
 	public ComboBox<String> sandwiches;
 	public ListView<String> basic;
@@ -42,15 +43,13 @@ public class SampleController {
 	ObservableList<String> type = FXCollections.observableArrayList("Chicken", "Beef", "Fish");
 	ObservableList<String> basicIngredients;
 	ObservableList<String> extras = FXCollections.observableArrayList("Tomatoes", "Lettuce", "Onions", "Olives",
-			"Ketchup", "Mustard", "Cheece", "Pickles", "Mayo", "Spinach");
+			"Ketchup", "Chipotle", "Cheese", "Ranch", "Mayo", "Spinach");
 	ObservableList<String> extrasToAdd = FXCollections.observableArrayList();
 
 	public TextArea output;
 	public Button addButton;
 	public TextField prices;
 	public Button orderShow;
-	public Button remove;
-	public Button clear;
 
 	protected static Order passOrder() {
 		return order;
@@ -80,46 +79,82 @@ public class SampleController {
 
 	public void addExtra(ActionEvent event) {
 		ObservableList<String> selectedItems = extra.getSelectionModel().getSelectedItems();
-		output.appendText(selectedItems.size() + "");
-		if (extrasToAdd.size() + selectedItems.size() <= MAX_INGREDIENTS) {
-			for (int i= 0; i < selectedItems.size(); i++ ) {
-				String ingredient = selectedItems.get(i);
-				output.appendText(ingredient + "\n");
-				extrasToAdd.add(ingredient);
-				int index = extras.indexOf(ingredient);
-				extras.remove(index);
+		if(selectedItems.size() == 0) {
+			output.appendText("Click an Extra Ingredient to be added. Maximum Extra Ingredient is 6.\n");
+			return;
 		}
+		if (extrasToAdd.size() + selectedItems.size() <= MAX_INGREDIENTS) {
+			Sandwich item;
+			switch (sandwiches.getValue()) {
+			case "Beef":
+				item = new Beef();
+				break;
+			case "Fish":
+				item = new Fish();
+				break;
+			default:
+				item = new Chicken();
+			}
+			extrasToAdd.addAll(selectedItems);
+			extras.removeAll(selectedItems);
 			extra.setItems(extras);
 			extraToAdd.setItems(extrasToAdd);
-			//extraToAdd.setItems(selectedItems);
+			prices.setText("$" + df2.format(item.price() + extrasToAdd.size()*PER_EXTRA));
+			output.appendText("Extra Ingredients have been added\n");
+		}
+		else {
+			output.appendText("Extra Ingredient cannot be Added. Maximum Extra Ingredient is 6.\n");
 		}
 	}
 
 	public void removeExtra(ActionEvent event) {
-		ObservableList selectedIndices = extraToAdd.getSelectionModel().getSelectedIndices();
-
-		for (Object o : selectedIndices) {
-			String selectedItem = extraToAdd.getSelectionModel().getSelectedItem();
-			extrasToAdd.remove(selectedItem);
-			extras.add(selectedItem);
-
+		if(extrasToAdd.size() == 0) {
+			output.appendText("Extra Ingredients has already been removed\n");
+			return;
 		}
+		ObservableList<String> selectedItems = extraToAdd.getSelectionModel().getSelectedItems();
+		Sandwich item;
+		switch (sandwiches.getValue()) {
+		case "Beef":
+			item = new Beef();
+			break;
+		case "Fish":
+			item = new Fish();
+			break;
+		default:
+			item = new Chicken();
+		}
+		extras.addAll(selectedItems);
+		extrasToAdd.removeAll(selectedItems);
+		extra.setItems(extras);
+		extraToAdd.setItems(extrasToAdd);
+		output.appendText("Extra Ingredients have been removed\n");
+		prices.setText("$" + df2.format(item.price() + extrasToAdd.size()*PER_EXTRA));
 	}
-
-	/**
-	 * public void extraIngredientList(Sandwich sandwich, String action) {
-	 * 
-	 * if(action.equals("add")) { for(extras.)) } }
-	 * 
-	 * public void addExtra (ActionEvent event) {
-	 * 
-	 * if(extras.size() < MAX_INGREDIENTS ) {
-	 * 
-	 * 
-	 * }
-	 * 
-	 * }
-	 **/
+	
+	public void clearList(ActionEvent event) {
+		if(extrasToAdd.size() == 0) {
+			output.appendText("Extra Ingredients has already been cleared\n");
+			return;
+		}
+		Sandwich item;
+		switch (sandwiches.getValue()) {
+		case "Beef":
+			item = new Beef();
+			break;
+		case "Fish":
+			item = new Fish();
+			break;
+		default:
+			item = new Chicken();
+		}
+		extras.addAll(extrasToAdd);
+		extrasToAdd.removeAll(extrasToAdd);
+		extra.setItems(extras);
+		extraToAdd.setItems(extrasToAdd);
+		output.appendText("Extra Ingredients has been cleared\n");
+		prices.setText("$" + df2.format(item.price() + extrasToAdd.size()*PER_EXTRA));
+	}
 
 	public void comboClicked(ActionEvent event) {
 		Sandwich item;
@@ -138,19 +173,9 @@ public class SampleController {
 		String imgName = sandwiches.getValue() + ".jpg";
 		Image img = new Image(imgName);
 		imageChooser.setImage(img);
-		prices.setText("$" + df2.format(item.price()));
+		prices.setText("$" + df2.format(item.price() + extrasToAdd.size()*PER_EXTRA));
 	}
 
-	public void clearList(ActionEvent event) {
-		if (order.lineNum() == 0) {
-			output.appendText("Nothing in Order\n");
-		} else {
-			ArrayList<String> print = order.printOrder();
-			for (int i = 0; i < print.size(); i++) {
-				output.appendText(print.get(i) + "\n");
-			}
-		}
-	}
 
 	public void addOrder(ActionEvent event) {
 		Sandwich item;
@@ -165,11 +190,20 @@ public class SampleController {
 			item = new Chicken();
 		}
 		OrderLine obj = new OrderLine(item);
+		ArrayList<Extra> ingredients = new ArrayList<Extra>();
+		for (int i = 0; i < extrasToAdd.size(); i++) {
+			String extra = extrasToAdd.get(i);
+			ingredients.add(new Extra(extra));
+		}
+		if (ingredients.size() > 0) {
+			item.extras.addAll(ingredients);
+		}
 		if (order.add(obj)) {
 			output.appendText("Order Added\n");
 		} else {
 			output.appendText("Order Cannot Be Added\n");
 		}
+		clearList(event);
 		initialize();
 	}
 
