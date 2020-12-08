@@ -10,7 +10,7 @@
         android:id="@+id/museums"
         android:layout_width="115dp"
         android:layout_height="27dp"
-        android:text="Museums"
+        android:text="@string/Museums"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.089"
@@ -23,34 +23,49 @@
         android:id="@+id/Montclair"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Montclair Art Musum"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="63dp"
-        tools:ignore="MissingConstraints" />
+        android:text="@string/Montclair"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.067" />
 
     <Button
         android:id="@+id/Insectropolis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Insectropolis"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="246dp"
-        tools:ignore="MissingConstraints" />
+        android:text="@string/Insectropolis"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.309" />
+
 
     <Button
         android:id="@+id/Hunterdon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hunterdon Art Museum"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="180dp" />
+        android:text="@string/Hunterdon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.185"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.226" />
 
     <Button
         android:id="@+id/Liberty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Liberty Science Center"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="120dp" />
+        android:text="@string/Liberty"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.144" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
