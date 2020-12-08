@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Museum</string>
+    <string name="Museums">Museum</string>
+    <string name="Montclair">Montclair Art Museum</string>
+    <string name="Insectropolis">Insectropolis</string>
+    <string name="Hunterdon">Hunterdon Art Museum</string>
+    <string name="Liberty">Liberty Science Center</string>
+</resources>
