@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/museums"
+        android:layout_width="115dp"
+        android:layout_height="27dp"
+        android:text="Museums"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <Button
+        android:id="@+id/Montclair"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Montclair Art Musum"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="63dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/Insectropolis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insectropolis"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="246dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/Hunterdon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hunterdon Art Museum"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="180dp" />
+
+    <Button
+        android:id="@+id/Liberty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Liberty Science Center"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="120dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
