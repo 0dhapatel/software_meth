@@ -1,8 +1,18 @@
 <resources>
-    <string name="app_name">Museum</string>
-    <string name="Museums">Museum</string>
-    <string name="Montclair">Montclair Art Museum</string>
-    <string name="Insectropolis">Insectropolis</string>
-    <string name="Hunterdon">Hunterdon Art Museum</string>
-    <string name="Liberty">Liberty Science Center</string>
+    <string name="app_name">Museums In New Jersey</string>
+    <string name="calculate_ticket_price">Calculate Ticket Price</string>
+    <string name="student">Student</string>
+    <string name="senior">Senior</string>
+    <string name="adult">Adult</string>
+    <string name="ticket_total">Ticket Total</string>
+    <string name="ticket_price">Ticket Price</string>
+    <string name="sales_tax">Sales Tax</string>
+    <string-array name="ticketNumber">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 </resources>
