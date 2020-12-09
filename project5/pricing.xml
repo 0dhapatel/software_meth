@@ -1,116 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Pricing">
-
-    <TextView
-        android:id="@+id/ticketprice3"
-        android:layout_width="172dp"
-        android:layout_height="46dp"
-        android:text="Sales Tax"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="668dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/ticketprice2"
-        android:layout_width="172dp"
-        android:layout_height="46dp"
-        android:text="Ticket Total"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="730dp"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName4"
-        android:layout_width="64dp"
-        android:layout_height="43dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Senior"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="406dp"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="77dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Student"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="471dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="TextView"
-        tools:ignore="MissingConstraints" />
+    android:layout_height="wrap_content"
+    tools:context=".Price">
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calculate Ticket Price"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="519dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginTop="4dp"
+        android:text="@string/calculate_ticket_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="280dp"
-        android:layout_height="255dp"
-        app:srcCompat="@drawable/montclair_art_museum__montclair__new_jersey_"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="72dp" />
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="380dp"
+        android:layout_height="257dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/montclair" />
 
-    <EditText
+    <TextView
+        android:id="@+id/editTextTextPersonName2"
+        android:layout_width="77dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="@string/student"
+        android:focusable="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+
+
+    <TextView
+        android:id="@+id/editTextTextPersonName4"
+        android:layout_width="64dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="@string/senior"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <TextView
         android:id="@+id/editTextTextPersonName"
         android:layout_width="64dp"
         android:layout_height="43dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Adult"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="353dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="@string/adult"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="103dp"
-        android:layout_height="23dp"
-        tools:layout_editor_absoluteX="257dp"
-        tools:layout_editor_absoluteY="340dp"
-        tools:ignore="MissingConstraints" />
 
-    <resources tools:ignore="MissingConstraints">
-        <string-array android:name="planets_array">
-            <item>1</item>
-            <item>2</item>
-            <item>3</item>
-            <item>4</item>
-            <item>5</item>
-        </string-array>
-    </resources>
+    <TextView
+        android:id="@+id/ticketprice2"
+        android:layout_width="232dp"
+        android:layout_height="59dp"
+        android:text="@string/ticket_total"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ticketprice3"
+        app:layout_constraintVertical_bias="0.218" />
+
+    <TextView
+        android:id="@+id/ticketprice3"
+        android:layout_width="231dp"
+        android:layout_height="54dp"
+        android:text="@string/sales_tax"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ticketprice" />
 
     <TextView
         android:id="@+id/ticketprice"
-        android:layout_width="172dp"
+        android:layout_width="232dp"
         android:layout_height="46dp"
-        android:text="Ticket Price"
+        android:text="@string/ticket_price"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="606dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <TextView
+        android:id="@+id/adultPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="19dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+    <TextView
+        android:id="@+id/seniorPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName4"
+        app:layout_constraintTop_toBottomOf="@+id/adultPrice" />
+
+    <TextView
+        android:id="@+id/studentPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="24dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2"
+        app:layout_constraintTop_toBottomOf="@+id/seniorPrice" />
+
+    <Spinner
+        android:id="@+id/adultTicket"
+        android:layout_width="82dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+    <Spinner
+        android:id="@+id/seniorTicket"
+        android:layout_width="82dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adultTicket" />
+
+    <Spinner
+        android:id="@+id/studentTicket"
+        android:layout_width="82dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seniorTicket" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
