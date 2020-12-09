@@ -19,53 +19,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
 
-    <Button
-        android:id="@+id/Montclair"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Montclair"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.067" />
+    <ListView
+        android:id="@+id/MuseumNames"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="342dp" />
 
-    <Button
-        android:id="@+id/Insectropolis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Insectropolis"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309" />
-
-
-    <Button
-        android:id="@+id/Hunterdon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Hunterdon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.185"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.226" />
-
-    <Button
-        android:id="@+id/Liberty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Liberty"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.144" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
