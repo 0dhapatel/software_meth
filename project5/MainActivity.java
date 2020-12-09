@@ -4,11 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,20 +19,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ListView listView = (ListView) findViewById(R.id.listview);
-        final TextView textView = (TextView) findViewById(R.id.textview);
-        String[] players = new String[] {"CR7", "Messi", "Hazard", "Neymar"};
-        List<String> Players_list = new ArrayList<String>(Arrays.asList(players));
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Players_list);
+        String[] museumName = new String[] {"Montclair Art Museum", "Insectropolis", "Hunterdon Art Museum", "Liberty Science Center"};
+        List<String> museum_list = new ArrayList<>(Arrays.asList(museumName));
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, museum_list);
         listView.setAdapter(arrayAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = (String) parent.getItemAtPosition(position);
-                //textView.setText("The best football player is : " + selectedItem);
-                Intent intent = new Intent(MainActivity.this, Price.class);
-                intent.putExtra("museum", selectedItem);
-                startActivity(intent);
-            }
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedItem = (String) parent.getItemAtPosition(position);
+            Intent intent = new Intent(getApplicationContext(), Price.class);
+            intent.putExtra("museum", selectedItem);
+            startActivity(intent);
         });
     }
 }
