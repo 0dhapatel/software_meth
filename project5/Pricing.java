@@ -18,18 +18,36 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.Objects;
-
+/**
+ * This class controls activity_price.xml, and contains methods onCreate, onOptionsItemSelected, onCreateOptionsMenu .
+ *The porpose of this class is to provide and control the elements of the second museum activity.
+ *
+ * @author Jei Mota, Dhaval Patel
+ *
+ */
 public class Price extends AppCompatActivity {
-
+    
+    
+     /**
+     * This method  provide and control the elements of the first museum activity.
+     *
+     * @param savedInstanceState
+     */
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        
+        /**
+         * Formats decimal number to two points of precision.
+         */
         DecimalFormat df = new DecimalFormat("0.00");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_price);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
+         /**
+         * Toast message that let the user know that 5 is the maximum number of tickets allow to purchase.
+         */
         Toast.makeText(getApplicationContext(), "Maximum of 5 tickets for each!", Toast.LENGTH_SHORT).show();
 
         Intent intent = getIntent();
@@ -43,7 +61,9 @@ public class Price extends AppCompatActivity {
         double adult_price;
         double senior_price;
         double student_price;
-
+         /**
+         * These switch cases switch depending on the museum chosen. The title, prices, and image change aswell.
+         */
         switch(value){
             case "Montclair Art Museum":
                 adult.setText("$15");
@@ -97,6 +117,9 @@ public class Price extends AppCompatActivity {
 
         img.setOnClickListener(v -> {
             String site;
+            /**
+             * These switch cases switch the museum's link depending on the museum chosen.
+             */
             switch(value){
                 case "Montclair Art Museum":
                     site = "https://www.montclairartmuseum.org/";
@@ -116,7 +139,10 @@ public class Price extends AppCompatActivity {
             intent1.setData(Uri.parse(site));
             startActivity(intent1);
         });
-
+        
+        /**
+         * This button calculates the ticket total.
+         */
         Button calculate = (Button)findViewById(R.id.button);
         double finalAdult_price = adult_price;
         double finalSenior_price = senior_price;
@@ -140,7 +166,11 @@ public class Price extends AppCompatActivity {
         });
 
     }
-
+   /**
+     * This method returns true if the ItemId and the android Id are equal.
+     * @param item
+     * @return super.onOptionsItemSelected(item)
+     */
    @Override
    public boolean onOptionsItemSelected(MenuItem item) {
        if (item.getItemId() == android.R.id.home) {
@@ -149,7 +179,11 @@ public class Price extends AppCompatActivity {
        }
        return super.onOptionsItemSelected(item);
    }
-
+    /**
+     * This method create the Options menu.
+     * @param menu
+     * @return true
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
